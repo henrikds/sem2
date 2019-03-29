@@ -16,21 +16,21 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
    * A day or two extension is fine without motivation.
    * For longer extensions we want a reason for the extension. Please also contact us if there are [other things we need to consider](http://www.uib.no/student/49241/trenger-du-tilrettelegging-av-ditt-studiel%C3%B8p).
 
-# Progress report
-* Assignment by:   *NAME* (*abc123*)
+# Progress report - Please add answers/descriptions/comments to your project below 
+* Assignment by: *NAME* (*abc123*)
 * [ ] Assignment is ready for grading!
 * Code review:
    * [ ] I've received feedback from @username, ...
    * [ ] I've given feedback to @username, ...
-* Check list:
-   * [ ] Playable Battleship game.
-   * [ ] How the game is implemented, e.g., design choices, how the code is organized, what abstractions are used, is explained and motivated.
+* Checklist:
+   * [ ] A playable Battleship game
+   * [ ] Explanation and motivation for how the game is implemented, e.g., design decisions, how the code is organized, what abstractions are used, etc.
    * [ ] Tests
    * [ ] Documentation (JavaDoc, comments, diagrams, README, etc.)
    * [ ] Carefully named classes, interfaces, methods and variables.
    * [ ] Carefully chosen abstractions and encapsulation (use of classes, interfaces, methods, etc).
 
-### Running
+### Running instructions
 * To play the game, run: `class.name.here`
 
 ## Overview
@@ -42,14 +42,14 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
 ### Abstractions
 *(how elements of the game are represented by classes/objects)*
 
-### Learnings
+### Lessons learned
 *(What choices turned out to work well or less well? Is there something you'd have done differently?)*
 
 ## Testing
 *(how have you tested your implementation?)*
 
 ## Features / Bugs
-*(what works and doesn't)*
+*(what works and doesn't work)*
 
-## Code review
-*(did you learn anything from code review of yours or someone else's code?)*
+## Code review experience
+*(did you learn anything from review of your code or someone else's code?)*
