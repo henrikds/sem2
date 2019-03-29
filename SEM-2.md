@@ -13,7 +13,7 @@ In this assignment you're going to implement the game [Battleship](https://en.wi
 
 <img src="battleship.jpeg" alt="battleship" width="200"/>
 
-Traditionally, you would play this game with two human players. The players both place their own ships on a map that the opponent cannot see. The players then take turns guessing where the other player's ships are located, and the goal is to sink all of the opponent's ships by firing at them until all the positions covered by the ships have been hit. These days, you can even play Battleship against strangers on the internet [here](http://en.battleship-game.org/). **Note that the rules of this implementation are different from the rules you should use.**
+Traditionally, you would play this game with two human players. The players both place their own ships on a map that the opponent cannot see. The players then take turns guessing where the other player's ships are located, and the goal is to sink all of the opponent's ships by firing at them until all the positions covered by the ships have been hit. You can see an exciting video of the game [here](https://www.youtube.com/watch?v=Lzh8msRIHM0), (and laugh at the Dutch language!) or in English [here](https://www.youtube.com/watch?v=q0qpQ8doUp8). These days, you can even play Battleship against strangers on the internet [here](http://en.battleship-game.org/). **Note that the rules of this implementation are different from the rules you should use.**
 
 <img src="https://www.thesprucecrafts.com/thmb/OQUDstdI8iDaKKFjNHCXj9KV7xQ=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-basic-rules-of-battleship-411069_final-5bb4b5eb4cedfd0026fa567a.gif" alt="battleship rules" width="600"/>
 
