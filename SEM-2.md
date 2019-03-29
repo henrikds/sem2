@@ -157,12 +157,12 @@ To mix things up a little, you can add random events to your game. These events 
 
 - Ships move around.
 - Storms that damage the ships.
-- You get a glimpse of the other board.
+- You get a partial glimpse at the other board briefly.
 
 ### Other rules
 
-You can add alternative game modes to the game with, e.g., special attacks or the ability to drive your ships around.
+You can add alternative game modes to the game with, e.g., special attacks or the ability to move your ships around (but think of what this does to the gameplay!). A common variant of Battleship rules is for instance [salvo shooting](https://www.ultrabattleship.com/variations.php), where the players can shoot 3 times, and the opponent will only tell how many of the three shots were hits (and if so on what kind of vessel).
 
 ### Better AI
 
-You can make the AI more intelligent in many ways. You can even develop several different AIs and have them compete against each other. Or crush the AI your friend developed in friendly competition.
+You can make the AI more intelligent in many ways. You can even develop several different AIs and have them compete against each other. Or brutally crush the AI your friend developed in 'friendly' competition.
