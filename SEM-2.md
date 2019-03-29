@@ -57,28 +57,28 @@ We expect that the game works, that you're using classes in a way that makes sen
 
 *This part isn't mandatory, but makes you a better programmer and helps you prepare the assignment.*
 
-Explaining how your code works to someone else and figuring out how someone else's code works are great ways to build understanding (explaining how the code works to yourself is also a fantastic way to find bugs and is referred to as [rubber duck debugging](https://rubberduckdebugging.com/)). Therefore, we recommend that you gather in groups of, say, 2-4 students and do some [lightweight](http://codingsight.com/lightweight-code-review/) [code review](https://en.wikipedia.org/wiki/Software_peer_review) of each other's code.
+Explaining how your code works to someone else and figuring out how someone else's code works are great ways to build understanding (explaining how the code works to yourself is also a fantastic way to find bugs and is referred to as [rubber duck debugging](https://rubberduckdebugging.com/)). Therefore, we recommend that you gather in groups of, say, 2-4 students and do some [lightweight](http://codingsight.com/lightweight-code-review/) [code review](https://en.wikipedia.org/wiki/Software_peer_review) of each other's code:
 
-You can do it using the same computer, or you can give access to your repository to someone else [as in lab 4](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.lab4/blob/master/LAB-4-I_GIT.md#11-tilgang) and have them clone and test your code. The point is to give constructive feedback in order to learn and improve the code quality.
-
-Remember to comment what form of code review, if any, you used, what you changed and so on due to code review in [README.md](README.md).
+* It can be practical to discuss things together around the same computer, and explain your code to someone else or try to understand someone's code. 
+* You can also give access to your repository to someone else [as in lab 4](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.lab4/blob/master/LAB-4-I_GIT.md#11-tilgang) and have them clone and test your code. The point is to give constructive feedback in order to learn and improve the code quality.
+* Remember to comment what form of code review, if any, you used, what you changed and so on due to code review in [README.md](README.md).
 
 ## Design
 
-In this section, we describe some abstractions often used in a project like this. You're free to do it another way, however. Remember to explain your abstractions in README.md regardless of how you choose. Helping us understand what's going on may save you from unnecessary point deductions.
+In this section, we describe some abstractions often used in a project like this. You're free to do it another way, however. Remember to explain your abstractions in README.md regardless of how you choose to approach abstraction. Helping us understand what's going on may save you from unnecessary point deductions.
 
-The different parts of the program should be as separate as possible. For example by using different packages and avoiding unnecessary function calls between classes/packages/etc. **If you've done it well you should be able to replace any one component (e.g., the user interface or AI) without changing any other part of the code.**
+The individual parts of the program should be as cleanly separated as possible (encapsulated). You can achieve this for example by using different packages and avoiding unnecessary function calls between classes/packages/etc. **If you've done it well you should be able to replace any one component (e.g., the user interface or AI) without changing any other parts of the code.**
 
 ### Main loop
 
 Your program needs a core that ties it all together. The core is typically a class with a loop where each iteration corresponds to one round of the game. To write the main loop you need to be able to answer these questions. You'll save time by writing down the answers before you start writing.
 
-* Exactly what happens in each round?
+* What happens exactly in each round?
 * What does each round have in common?
-* What's different when the AI makes a move from when the human makes a move?
-* Exactly what happens when the game starts but not in each round?
+* What's different when the computer (AI) makes a move from when the human player makes a move?
+* What happens only when the game starts, but not in each round?
 
-Siden alle runder (hver spiller sin) likner på hverandre, og alle hele spill (fra start til slutt) likner på hverandre, er det typisk at man lager en løkke for hver, og legger dem inni hverandre:
+Since all player rounds look alike, and all game rounds (from beginning to end) look alike, you could make a nested loop:
 
 ```java
 main(){
@@ -92,57 +92,61 @@ loop until program should stop {
     }
 }
 ```
-By loop we mean any of for, while, do-while. You have to decide which kind of loop is right for each case. This is a good place to user iterators.
+By loop we mean any of for, while, do-while. You have to decide which kind of loop is right for each case. This is a good place to use iterators.
 
 ### Abstractions
 
-Here are some abstractions that may be a good idea to use.
+Here are some abstractions tips:
 
 * Game: Contains the components that make up a game, e.g., board, players, markers.
 * Ship: Stores the properties of a ship.
 * Board: Contains the current state of the board and provides methods for changing the game state. Contains ships.
-* Player: Contains all functionality for making a move in the game. The Game abstraction asks the Player abstraction to make a move and then changes the game state accordingly. For a human player the player abstraction would ask for user input and for an AI player the choice would be made automatically.
-* Rules: Could be used to check that a given move is legal and figure out if a player has won. Separating the rules from the rest of the game allows you to  change the rules without changing anything else in your code. For example, maybe you want to implement alternative game modes.
+* Player: Contains all functionality for making a move in the game. The Game abstraction asks the Player abstraction to make a move and then changes the game state accordingly. For a human player the player abstraction would ask for user input and for the computer AI player the choice would be made automatically. You could consider a Player interface that is implemented by both the human and computer player.
+* Rules: Could be used to check that a given move is legal and figure out if a player has won (win conditions). Separating the rules from the rest of the game allows you to change the rules without changing anything else in your code. For example, maybe you want to implement alternative game modes and rulesets as a bonus feature.
 
 ### User interface
 
-The user interface is the part of the program that accepts input from the player (typically string inputs or mouse clicks) and displays the program output (the current state of the game board, what happened due to something the player did and what the player should do next). You can either create a text-based interface that uses text characters in a terminal window to show what's going on or you can create a [graphical user interface](https://www.youtube.com/watch?v=lNN2i5nWJy4) in a separate window. A text based interface is fine. It's more important that you separate the user interface code cleanly from the rest of the code and that this part of your code is well documented.
+The user interface is the part of the program that accepts input from the player (typically keyboard key presses or mouse clicks) and displays the program output (the current state of the game board, what happened due to something the player did and what the player should do next). 
 
-How well you've managed to separate the user interface code from the rest is measured by how easy it is for you to use someone else's user interface in your game. It should be relatively easy if you have a good API and should require few changes in your code. If you agree on a good way to separate the user interface from the rest with someone else you've effectively developed a standard!
+You can either create a text-based interface that uses text characters in a terminal window to show what's going on or you can create a [graphical user interface](https://www.youtube.com/watch?v=lNN2i5nWJy4) in a separate window. A text based interface is fine. It's more important that you separate the user interface code cleanly (modular code) from the rest of the code and that this is well documented.
+
+How well you've managed to separate the user interface code from the rest is measured by how easy it is for you to use someone else's user interface in your game. It should be relatively easy if you have a smart API, and should require few changes in your code. If you agree on a good way to separate the user interface from the rest with someone else, you've effectively developed a standard!
 
 *It's not a requirement to switch user interface with someone else, but if you can do it without too much work you're in very good shape!*
 
 #### (pro) tips
 
-Some (pro) tips for implementing the user interface.
+Some (pro) tips for implementing the user interface:
 
 * ...use console-I/O with `Scanner` and `System.out.println()`.
-* ...copy the graphics library from another assignment, e.g.,  [the first obligatory assignment](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.sem1/tree/master/src/inf101/v19/gfx). The graphics can be drawn with text as in the obligatory assignment, with turtle graphics or shapes – see, for example, how the ducks are drawn in [Lab 6](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.lab6/blob/master/src/inf101/v19/pond/Duck.java). See [the Main class](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.sem1/blob/master/src/inf101/v19/rogue101/Main.java) for setup (can be made much simpler than in the first obligatory), and to see how you can register keyboard input.
+* ...copy the graphics library from another assignment, e.g.,  [the first obligatory assignment](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.sem1/tree/master/src/inf101/v19/gfx). The graphics can be drawn with text as in the obligatory assignment, or with turtle graphics or shapes – see, for example, how the ducks are drawn in [Lab 6](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.lab6/blob/master/src/inf101/v19/pond/Duck.java). See [the Main class](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.sem1/blob/master/src/inf101/v19/rogue101/Main.java) for setup (can be made much simpler than in the first obligatory), and to see how you can register keyboard input.
 * ...use [Swing](https://docs.oracle.com/javase/tutorial/uiswing/components/index.html) or [JavaFX](https://docs.oracle.com/javase/8/javafx/get-started-tutorial/jfx-overview.htm) to create an interface. You'll have to invest some time to learn how these libraries work. See, e.g., [JavaFX 8 GUI Tutorial](https://code.makery.ch/library/javafx-8-tutorial/).
-
-I tillegg til en vanlig spiller, må du kunne lage AI-spillere. Bruk gjerne et Spiller-interface som begge disse typene implementerer, og kanskje en felles superklasse dersom de ser ut til å dele oppførsel. Eventuelt kan AI-spiller arve fra Spiller. Vurder selv hvordan du vil gjøre det, og begrunn valget ditt.
 
 ## Getting started
 
-I (Albin) recommend that you start by implementing the game in one or two files and that you get something that sort of works. Once you have a partial implementation I recommend that you start thinking more carefully about what properties Battleship has and how you can represent these using abstractions. Think about which classes you need, what they should contain and how they should fit together. This will be made easier by you having worked on the problem for a bit already. See [the modeling part of the first obligatory](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.sem1/blob/master/SEM-1_DEL-A.md#oversikt-modellering) for an example.
+There are two main approaches for getting started with this project.
 
-Once you have an idea on what abstractions you need you can start converting your current program into the one you envisioned (this process is referred to as [refactoring](https://en.wikipedia.org/wiki/Code_refactoring)). You will typically have to stop, rethink your design choices and refactor several times during the project.
+I (Albin) recommend that you start by implementing the basic game in one or two files and that you get something that sort of works. Once you have a partial implementation I recommend that you start thinking more carefully about what properties Battleship has and how you can represent these using abstractions. Think about which classes you need, what they should contain and how they should fit together. This will be made easier by you having worked on the problem for a bit already. See [the modeling part of the first obligatory](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.sem1/blob/master/SEM-1_DEL-A.md#oversikt-modellering) for an example. Once you have an idea on what abstractions you need you can start converting your current program into the one you envisioned (this process is referred to as [refactoring](https://en.wikipedia.org/wiki/Code_refactoring)). You will typically have to stop, rethink your design choices and refactor several times during the project.
+
+Alternatively, you can start by thinking about what the essential properties of the real game of Battleship are, and how you can abstract from them in your implementation. You can consider what interfaces and classes you think you'll need, what methods and field variables, and maybe write tests for this already. See [the modeling part of the first obligatory](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.sem1/blob/master/SEM-1_DEL-A.md#oversikt-modellering) for an example. 
+
+You can of course also choose to go with a combination of these two approaches.
 
 ### Useful INF101 concepts
 
 ***This isn't a check list of things you need and isn't complete.*** This is a list of INF101 concepts that may be useful and how to use them. You surely have to use things not on the list and you don't need to use everything on the list if it doesn't fit.
 
-* **Interfaces**. It's natural to use interfaces to define behavior in your code. Then you can use the interface type instead of the class type in other parts of the program. This makes your program modular and allows parts of it easily.
-* **Inheritance**. If objects share some functionality you can improve code re-use by having one class inherit from the other or move the common functionality into a separate class that both inherit from.
-* **Factory**. If you need to create a lot of objects from some class or if you need a lot of typical objects it may be a good idea to use a factory. Typically you should use a factory if you have code (if statements etc.) that you copy around at all places you create objects.
+* **Interfaces**. It's natural to use interfaces to define behavior for your classes. Then you can use the interface type instead of the class type to declare variables. This makes your program modular and allows parts of it to easily be exchanged.
+* **Inheritance**. If objects or classes share some functionality, you can improve code re-use by having one class inherit from the other, or moving the common functionality into a separate class that both inherit from.
+* **Factory**. If you need to create a lot of objects from some class or if you need a lot of typical objects it may be a good idea to use a factory. Typically you should use a factory if you have code (if statements etc.) that you copy around in all places you create objects.
 * **Tests**. Test your code as well as you can. See previous assignments for suggestions.
 * **Preconditions**. Add preconditions to methods and constructors where useful.
-* **Data invariant**. Add data invariant (checking that field variables have a valid combination of values) to your classes where you can. This counts as part of the documentation.
-* **Data structures**. See Grid from previous assignments.
-* **Generic types**. Data structures should be generic. Perhaps also other parts of the program.
+* **Data invariant**. Add data invariant (checking that field variables have a valid combination of values) to your classes where you can. This will help with debugging and counts as part of the documentation.
+* **Data structures**. See for example Grid from previous assignments.
+* **Generic types**. Data structures should be generic. Perhaps also other parts of the program should be made generic.
 * **Iterator**. You can use iterators in several ways. For example, you can iterate over players in the round-loop and over ships to check if they've all been sunk.
-* **Class diagrams** Draw a diagram over your classes and how they fit together. This is very useful both for you, for the teaching assistants when they help you.
-* ***Encapsulation*** Use private modifiers where you can and hide the internals of classes (variables exact implementation) from other parts of the program as well as you can. Interfaces is a nice way to accomplish this.
+* **Class diagrams** It is strongly recommended to draw a UML diagram for your classes and how they fit together. This is very useful both for you and for the teaching assistants when they help you.
+* ***Encapsulation*** Use private modifiers where you can and hide the internals of classes (variables exact implementation) from other parts of the program as well as you can. Interfaces are a nice way to accomplish this.
 
 ## Above and beyond
 
