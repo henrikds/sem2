@@ -1,4 +1,4 @@
-package inf101.v18.sem2;
+package inf101.v19.sem2;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,11 +7,11 @@ public class AppInfo {
 	/**
 	 * Your application name.
 	 */
-	public static final String APP_NAME = "Connect4";
+	public static final String APP_NAME = "Battleship";
 	/**
 	 * The main class, for starting the application
 	 */
-	public static final Class<?> APP_MAIN_CLASS = null; // e.g., inf101.v18.sem2.Main.class
+	public static final Class<?> APP_MAIN_CLASS = null; // e.g., inf101.v19.sem2.Main.class
 	/**
 	 * Your name.
 	 */
