@@ -10,7 +10,7 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
 * The entire assignment has to be done by **Friday the 26th of April 23:59** 
 * [Tips for a smooth(er) handin](https://retting.ii.uib.no/inf101/inf101.v19/wikis/innlevering)
 
-**You have to indicate which parts of the assignment you've completed and if the assignment is ready for grading in the section below of README.md.**
+**You have to indicate which parts of the assignment you've completed and if the assignment is ready for grading in the section below in your README.md.**
 
 **Extension:** You can ask the teaching assistants for a deadline extension if needed. You should already have completed parts of the assignment and pushed these to the repository when asking for an extension.
    * A day or two extension is fine without motivation.
