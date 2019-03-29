@@ -155,8 +155,8 @@ These are not requirements, but suggestions on things you can develop further if
 ### Random events
 To mix things up a little, you can add random events to your game. These events are executed in each round with a certain probability and change the state of the game. Examples are the following (but it can be anything fun, be creative!):
 
-- Ships move around.
-- Storms that damage the ships.
+- Ships move around randomly.
+- Storms or shark attacks that damage some of the ships (or parts of them).
 - You get a partial glimpse at the other board briefly.
 
 ### Other rules
