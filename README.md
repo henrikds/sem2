@@ -8,7 +8,7 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
 
 **Deadline:**
 * The entire assignment has to be handed in by **Friday the 26th of April 23:59** 
-* [Tips for a smooth(er) handin](https://retting.ii.uib.no/inf101/inf101.v19/wikis/innlevering)
+* [Tips for a smooth(er) hand-in (same as for SEM-1)](https://retting.ii.uib.no/inf101/inf101.v19/wikis/innlevering)
 
 **You have to indicate which parts of the assignment you've completed and if the assignment is ready for grading in the section below in your README.md.**
 
