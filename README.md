@@ -12,9 +12,9 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
 
 **You have to indicate which parts of the assignment you've completed and if the assignment is ready for grading in the section below in your README.md.**
 
-**Extension:** You can ask the teaching assistants for a deadline extension if needed. You should already have completed parts of the assignment and pushed these to the repository when asking for an extension.
+**Extension:** You can ask the teaching assistants for a deadline extension if needed. You should already have completed parts of the assignment and pushed these to the repository at before the deadline when asking for an extension.
    * A day or two extension is fine without motivation.
-   * For longer extensions we want a reason for the extension. Please also contact us if there are [other things we need to consider](http://www.uib.no/student/49241/trenger-du-tilrettelegging-av-ditt-studiel%C3%B8p).
+   * For longer extensions, we need a concrete reason for the delay. Please also contact us if there are [other things we need to consider](http://www.uib.no/student/49241/trenger-du-tilrettelegging-av-ditt-studiel%C3%B8p).
 
 # Progress report - Please add answers/descriptions/comments to your project below 
 * Assignment by: *NAME* (*abc123*)
