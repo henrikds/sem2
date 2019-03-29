@@ -3,10 +3,10 @@
 * [README](README.md) – you need to write things here
 * **Assignment instructions**
 
-## Teaching goals
-- Learning to design software from scratch.
+## Learning outcomes
+- Learning to design software from scratch and making your own design decisions.
 - Implementing and testing your design on your own.
-- Creating documentation. Describing and motivating design choices.
+- Creating documentation and describing and motivating design choices.
 
 ## Battleship
 In this assignment you're going to implement the game [Battleship](https://en.wikipedia.org/wiki/Battleship_(game)) according to the according to the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF) with one player controlled by you (the human) and the other by an AI.
