@@ -13,10 +13,9 @@ In this assignment you're going to implement the game [Battleship](https://en.wi
 
 <img src="battleship.jpeg" alt="battleship" width="200"/>
 
-Traditionally, you would play this game with two human players. The players take turns guessing where the other player's ships are located, and the goal is to sink all of the opponent's ships by firing at them until all the positions covered by the ships have been hit. These days, you can play Battleship against strangers on the internet [here](http://en.battleship-game.org/). **Note that the rules of this implementation are different from the rules you should use.**
+Traditionally, you would play this game with two human players. The players both place their own ships on a map that the opponent cannot see. The players then take turns guessing where the other player's ships are located, and the goal is to sink all of the opponent's ships by firing at them until all the positions covered by the ships have been hit. These days, you can even play Battleship against strangers on the internet [here](http://en.battleship-game.org/). **Note that the rules of this implementation are different from the rules you should use.**
 
 <img src="https://www.thesprucecrafts.com/thmb/OQUDstdI8iDaKKFjNHCXj9KV7xQ=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-basic-rules-of-battleship-411069_final-5bb4b5eb4cedfd0026fa567a.gif" alt="battleship rules" width="600"/>
-
 
 
 You're going to create a program for playing Battleship. You decide yourself how to create the user interface, how to organize the code, what abstractions to use, and what to name classes, interfaces etc. You've received an empty Java project in which you should implement the game. Other than that, it's up to you how to develop the game. However, we'll score the assignment (0-100 points) based on how well you've used what you've learned in the INF101 course. We'll provide some design considerations and suggestions to help you get started, as well as, for those among you craving excitement, some ideas on how to make the assignment more interesting.
@@ -31,29 +30,28 @@ Get the code from:
 
 (Remember to replace `<username>` with your username.) This repository contains the assignment instructions and an empty Java project. You need to develop the program in this project and push to the repository as you've done previously. When grading your solution we'll look for:
 
-* A working Battleship game that can be played against an AI.
+* A working Battleship game that can be played alone against the computer (AI).
 * [README-fil](README.md) explaining design choices, how the code is organized, what abstractions are used and other things we need to know about your code.
 * Tests
 * Documentation (JavaDoc, comments, diagrams, README, etc.)
 * Carefully named classes, interfaces, methods and variables.
-* Carefully chosen abstractions and encapsulation (use of classes, interfaces, methods, etc).
+* Carefully chosen abstractions and encapsulation (use of classes, interfaces, methods, etc). - explained in README
 
-You may discuss the assignment with others (in fact, we encourage it), but you have to write the code yourself and you need to write in README.md if specific design choices in your program is due to a discussion with someone. See also on [code review below](SEM-2.md#code-review)
+You may discuss the assignment with others (in fact, we encourage it), but you have to write the code yourself and you need to write in README.md if specific design choices in your program are due to a discussion with someone. See also the section on [code review below](SEM-2.md#code-review)
 
 ## The program
-The goal of the assignment is to create a working implementation of Battleship, where a human controls one side and an AI controls the other side. The requirements are:
+The goal of the assignment is to create a working implementation of Battleship, where a human controls one side and the computer (an AI) controls the other side. The requirements are:
 
-* The game works according to the traditional rules for Battleship. TODO: add link to rules
-* Det er spillbart, ut ifra [reglene](SEM-2.md#reglene) til det tradisjonelle Fire på Rad.
-* The game has a [user interface](SEM-2.md#user-interface) that displays the necessary information to the user (where the ships are, where the player and AI has fired previously, showing if someone has won) and allows the user to input decisions. The user interface can be either text based, using e.g., println and scanner, or a graphical.
-* You've implemented an AI player. The AI player doesn't have to be very intelligent. It's sufficient to have it make random valid moves.
-* Your code clearly shows how you've used object-oriented programming to create an [abstraction](#abstraction) of the game using, e.g., classes, interfaces etc. Please carefully describe how things fit together in README.md.
+* The game is playable according to the traditional rules for Battleship: [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF)
+* The game has a [user interface](SEM-2.md#user-interface) that displays the necessary information to the user (where the ships are, where the player and AI have fired previously, showing if someone has won) and allows the user to input moves. The user interface can be either text based, using e.g., `System.out.println` and a `Scanner` object, or a graphical user interface that can be controlled by clicking.
+* You've implemented a computer (AI) player. The AI player doesn't have to be very intelligent. It's sufficient to have it make random valid moves.
+* Your code clearly shows how you've used object-oriented programming to create an [abstraction](#abstraction) of the real physical game using good classnames, interfaces, method names, field variables etc. Please carefully describe how these things fit together in README.md.
 
 ## Grading
 
-The number of points (0-100) we give depends on how good your implementation is. Battleship is relatively simple and *can* be implemented in one file without classes and methods (INF100 style). If you solve the assignment in this way you'll receive close to 0 points. We expect that the program works approximately as intended, but to receive a high score you also need to show that you can use object oriented programming effectively and that you can write tests and documentation. **It's better to deliver an implementation that is nicely organized and utilizes excellent abstractions in the spirit of object oriented programming that doesn't work exactly as specified than it is to hand in a fully working game that is poorly organized or is missing tests/documentation.**
+The number of points we give depends on how good your implementation is and demonstrates that you have learned the important concepts in INF101. Battleship is relatively simple and *can* be implemented in one file without classes and methods (INF100-style). If you solve the assignment in this way you'll receive close to 0 points. We expect that the program works approximately as intended, but to receive a high score you also need to show that you can use object oriented programming effectively and that you can write tests and documentation. **It's better to deliver an implementation that is nicely organized and utilizes excellent abstractions in the spirit of object oriented programming that doesn't work exactly as specified than it is to hand in a fully working game that is poorly designed, organized and/or is missing tests/documentation.**
 
-We expect that the game works, that you're using classes in a way that makes sense (see below) and that these are documented and have tests. If your implementation is missing something we'll deduct fewer points if you explain in README.md what the problem is and how you'd have solved it. This is also true for design choices. If it turns out that one of your design choices gives you problems we'll deduct fewer points if you explain what you learned from the experience and what you'd have done differently, even if you don't have time to change the implementation.
+We expect that the game works, that you're using classes in a way that makes sense (see below) and that these are documented well and have tests. If your implementation is missing something we'll deduct fewer points if you explain in README.md what the problem is and how you would have solved it. This is also true for design decisions. If it turns out that one of your design choices gives you problems, we'll deduct fewer points if you explain what you learned from the experience and what you'd have done differently, even if you don't have time to change the implementation.
 
 ## Code Review
 
