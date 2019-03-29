@@ -9,7 +9,7 @@
 - Creating documentation and describing and motivating design choices.
 
 ## Battleship
-In this assignment you're going to implement the game [Battleship](https://en.wikipedia.org/wiki/Battleship_(game)) according to the according to the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF) with one player controlled by you (the human) and the other by an AI.
+In this assignment you're going to implement the game [Battleship](https://en.wikipedia.org/wiki/Battleship_(game)) according to the according to the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF) with one player controlled by you (the human) and the other by the computer (AI).
 
 You can play Battleship against strangers on the internet [here](http://en.battleship-game.org/). **Note that the rules of this implementation are different from the rules you should use.**
 
