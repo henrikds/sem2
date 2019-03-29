@@ -10,10 +10,12 @@
 
 ## Battleship
 In this assignment you're going to implement the game [Battleship](https://en.wikipedia.org/wiki/Battleship_(game)) according to the according to the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF) with one player controlled by you (the human) and the other by the computer (AI). 
+
 <img src="battleship.jpeg" alt="battleship" width="200"/>
 
 Traditionally, you would play this game with two human players. The players take turns guessing where the other player's ships are located, and the goal is to sink all of the opponent's ships by firing at them until all the positions covered by the ships have been hit. These days, you can play Battleship against strangers on the internet [here](http://en.battleship-game.org/). **Note that the rules of this implementation are different from the rules you should use.**
-<img src="https://www.thesprucecrafts.com/thmb/OQUDstdI8iDaKKFjNHCXj9KV7xQ=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-basic-rules-of-battleship-411069_final-5bb4b5eb4cedfd0026fa567a.gif" alt="battleship rules" width="200"/>
+
+<img src="https://www.thesprucecrafts.com/thmb/OQUDstdI8iDaKKFjNHCXj9KV7xQ=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-basic-rules-of-battleship-411069_final-5bb4b5eb4cedfd0026fa567a.gif" alt="battleship rules" width="400"/>
 
 
 
