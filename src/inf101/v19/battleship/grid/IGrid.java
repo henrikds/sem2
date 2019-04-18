@@ -1,5 +1,6 @@
-package inf101.v19.sem2;
+package inf101.v19.battleship.grid;
 
+import inf101.v19.battleship.objects.IItem;
 
 public interface IGrid<T> {
 

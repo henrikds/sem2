@@ -1,7 +1,9 @@
-package inf101.v19.sem2;
+package inf101.v19.battleship.grid;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import inf101.v19.battleship.objects.IItem;
 
 /**
  * 

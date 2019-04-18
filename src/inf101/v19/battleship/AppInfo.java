@@ -1,4 +1,5 @@
-package inf101.v19.sem2;
+package inf101.v19.battleship;
+
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,8 @@
-package inf101.v19.sem2;
+package inf101.v19.battleship.objects;
 
-public interface Ship extends IItem {
+import inf101.v19.battleship.grid.Area;
+
+public interface IShip extends IItem {
 	
 	/**
 	 * @return The length of the ship.
@@ -21,5 +23,12 @@ public interface Ship extends IItem {
 	 * @return Custom name.
 	 */
 	String getCustomName(String name);
+	
+	/**
+	 * Return area of ship.
+	 * 
+	 * @return ship area.
+	 */
+	Area getArea();
 
 }

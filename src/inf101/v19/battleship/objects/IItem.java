@@ -1,4 +1,4 @@
-package inf101.v19.sem2;
+package inf101.v19.battleship.objects;
 
 public interface IItem {
 		
