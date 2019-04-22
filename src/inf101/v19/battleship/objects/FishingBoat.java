@@ -5,7 +5,7 @@ import inf101.v19.battleship.grid.Area;
 public class FishingBoat implements IShip{
 
 	private Area shipArea;
-	private int length = 1;
+	private int length = 2;
 	private String customName;
 	
 	public FishingBoat(int x, int y) {

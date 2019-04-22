@@ -16,16 +16,11 @@ public interface IGrid<T> {
 
 	/**
 	 * 
-	 * Set the contents of the cell in the given x,y location. 
+	 * Put item into the grid. 
 	 * 
-	 * y must be greater than or equal to 0 and less than getHeight().
-	 * x must be greater than or equal to 0 and less than getWidth().
-	 * 
-	 * @param x The column of the cell to change the contents of.
-	 * @param y The row of the cell to change the contents of.
 	 * @param item The contents the cell is to have.
 	 */
-	void set(int x, int y, IItem item);
+	void put(IItem item);
 
 	/**
 	 * 
@@ -38,12 +33,12 @@ public interface IGrid<T> {
 	 * @param y The row of the cell to get contents of.
 	 */
 	IItem get(int x, int y);
-
-	/**
-	 * Make a copy
-	 *
-	 * @return A fresh copy of the grid, with the same elements
-	 */
-	IGrid<T> copy();
+//
+//	/**
+//	 * Make a copy
+//	 *
+//	 * @return A fresh copy of the grid, with the same elements
+//	 */
+//	IGrid<T> copy();
 
 }

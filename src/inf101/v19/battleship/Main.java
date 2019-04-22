@@ -15,13 +15,13 @@ public class Main {
 			MyGrid<IItem> boardPlayer = new MyGrid<IItem>(10, 10, null);
 			FishingBoat stuart = new FishingBoat(2, 3);
 			
-			boardAI.set(stuart.getArea().getXStart(), stuart.getArea().getYStart(), stuart);
+			boardAI.put(stuart);
 			
 			gameRunning = false;
 			
-			for(int i=0; i<10; i++) {
-				for (int j=0; j<10; j++) {
-					IItem print = boardAI.get(i, j);
+			for(int y=0; y<10; y++) {
+				for (int x=0; x<10; x++) {
+					IItem print = boardAI.get(x, y);
 					if (print != null) {
 						System.out.print("Fish ");
 					}
@@ -29,7 +29,6 @@ public class Main {
 				}
 				System.out.println("\n");
 			}
-			
 		}
 //		loop until program should stop {
 //		    initialize the game;

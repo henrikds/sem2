@@ -1,7 +1,5 @@
 package inf101.v19.battleship.objects;
 
-import inf101.v19.battleship.grid.Area;
-
 public interface IShip extends IItem {
 	
 	/**
@@ -23,12 +21,5 @@ public interface IShip extends IItem {
 	 * @return Custom name.
 	 */
 	String getCustomName(String name);
-	
-	/**
-	 * Return area of ship.
-	 * 
-	 * @return ship area.
-	 */
-	Area getArea();
 
 }

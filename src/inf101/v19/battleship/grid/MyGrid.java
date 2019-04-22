@@ -50,13 +50,17 @@ public class MyGrid<T> implements IGrid<T> {
 
 
 	@Override
-	public void set(int x, int y, IItem item) {
-		if(x < 0 || x >= width)
-			throw new IndexOutOfBoundsException();
-		if(y < 0 || y >= height)
-			throw new IndexOutOfBoundsException();
-
-		cells.set(x + (y * width), item);
+	public void put(IItem item) {
+		int yStart = item.getArea().getXStart();
+		int xStart = item.getArea().getYStart();
+		int yEnd = item.getArea().getYEnd();
+		int xEnd = item.getArea().getXEnd();
+		
+		for (int y = yStart; y <= yEnd; y++) {
+			for (int x = xStart; x <= xEnd; x++) {
+				cells.set(x + (y * width), item);
+			}
+		}
 	}
 
 	
@@ -70,14 +74,13 @@ public class MyGrid<T> implements IGrid<T> {
 		return cells.get(y + (x * width));
 	}
 
-	@Override
-	public IGrid<T> copy() {
-		MyGrid<T> newGrid = new MyGrid<>(getWidth(), getHeight(), null);
-
-		for (int x = 0; x < width; x++)
-			for(int y = 0; y < height; y++)
-				newGrid.set(x,  y,  get(x, y));
-		return newGrid;
-	}
-
+//	@Override
+//	public IGrid<T> copy() {
+//		MyGrid<T> newGrid = new MyGrid<>(getWidth(), getHeight(), null);
+//
+//		for (int x = 0; x < width; x++)
+//			for(int y = 0; y < height; y++)
+//				newGrid.set(x,  y,  get(x, y));
+//		return newGrid;
+//	}
 }
