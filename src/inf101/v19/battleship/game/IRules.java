@@ -18,5 +18,15 @@ public interface IRules {
 	 * @return If player is notified about sunken ships.
 	 */
 	boolean getSinkNotice();
+	
+	/**
+	 * @return Width of board
+	 */
+	int getBoardWidth();
+	
+	/**
+	 * @return Height of board
+	 */
+	int getBoardHeight();
 
 }

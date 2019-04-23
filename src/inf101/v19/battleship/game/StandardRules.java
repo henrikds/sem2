@@ -27,4 +27,14 @@ public class StandardRules implements IRules{
 		return false;
 	}
 
+	@Override
+	public int getBoardWidth() {
+		return 10;
+	}
+
+	@Override
+	public int getBoardHeight() {
+		return 10;
+	}
+
 }

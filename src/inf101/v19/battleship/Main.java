@@ -13,11 +13,13 @@ public class Main {
 		boolean gameRunning = true;
 		
 		while (gameRunning) {
-//		    initialize the game
+//		    Initialise the game
 			IRules rules = new StandardRules();
 			
-			MyGrid<IItem> boardAI = new MyGrid<IItem>(10, 10, null);
-			MyGrid<IItem> boardPlayer = new MyGrid<IItem>(10, 10, null);
+			int boardWidth = rules.getBoardWidth();
+			int boardHeight = rules.getBoardHeight();
+			MyGrid<IItem> boardAI = new MyGrid<IItem>(boardWidth, boardHeight, null);
+			MyGrid<IItem> boardPlayer = new MyGrid<IItem>(boardWidth, boardHeight, null);
 			
 			FishingBoat stuart = new FishingBoat(2, 3);
 			Carrier kingKong = new Carrier(5,6);
@@ -26,26 +28,55 @@ public class Main {
 			boardAI.put(kingKong);
 			
 			gameRunning = false;
+			String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 			
-			for(int y=0; y<10; y++) {
-				for (int x=0; x<10; x++) {
-					IItem print = boardAI.get(x, y);
-					
-					if (print != null) {
-						System.out.print("Item ");
+			for(int y = 0; y < boardHeight + 1; y++) {
+				
+				if (y != 0) System.out.print(y + "   ");
+				else System.out.print("    ");
+			}
+			System.out.print("\n");
+			
+			for(int y = 0; y < boardHeight; y++) {
+				for (int x = -1; x < boardWidth; x++) {
+					if (x == -1) {
+						System.out.print(alphabet.charAt(y) + " ");
 					}
-					else System.out.print(print+" ");
+					else {
+						IItem print = boardAI.get(x, y);
+						
+						if (print != null) {
+							System.out.print("Item");
+						}
+						else System.out.print("|__|");
+					}
+				}
+				System.out.println("\n");
+			}
+			
+			for(int y = 0; y < boardHeight + 1; y++) {
+				
+				if (y != 0) System.out.print(y + "   ");
+				else System.out.print("    ");
+			}
+			System.out.print("\n");
+			
+			for(int y = 0; y < boardHeight; y++) {
+				for (int x = -1; x < boardWidth; x++) {
+					if (x == -1) {
+						System.out.print(alphabet.charAt(y) + " ");
+					}
+					else {
+						IItem print = boardPlayer.get(x, y);
+						
+						if (print != null) {
+							System.out.print("Item");
+						}
+						else System.out.print("|__|");
+					}
 				}
 				System.out.println("\n");
 			}
 		}
-//		loop until program should stop {
-//		    initialize the game;
-//		    loop per single game {
-//		        reset the board to prepare for a new round;
-//		        loop per round {
-//		            do things required in each round;
-//		        }
-//		    }
 	}
 }

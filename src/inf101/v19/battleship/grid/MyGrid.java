@@ -25,7 +25,7 @@ public class MyGrid<T> implements IGrid<T> {
 	 *            What the cells should initially hold (possibly null)
 	 */
 	public MyGrid(int width, int height, IItem item) {
-		if(width <= 0 || height <= 0)
+		if(width <= 0 || height <= 0 || width > 27 || height > 27)
 			throw new IllegalArgumentException();
 
 		this.height = height;
