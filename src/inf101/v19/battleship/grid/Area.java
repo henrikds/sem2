@@ -17,8 +17,8 @@ public class Area implements IArea {
 	 * @param length
 	 */
 	
-	public Area(int x, int y, int height, int length) {
-		if(x < 0 || y < 0 || height <= 0 || length <= 0)
+	public Area(int x, int y, int length, int height) {
+		if(x <= 0 || y <= 0 || length <= 0 || height <= 0)
 			throw new IllegalArgumentException();
 		
 		this.x = x;
@@ -49,12 +49,12 @@ public class Area implements IArea {
 
 	@Override
 	public int getXEnd() {
-		return x + length;
+		return x + length - 1;
 	}
 
 	@Override
 	public int getYEnd() {
-		return y + height;
+		return y + height - 1;
 	}
 
 	@Override

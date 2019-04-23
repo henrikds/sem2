@@ -1,15 +1,13 @@
 package inf101.v19.battleship.game;
 
-import java.util.List;
-
-import inf101.v19.battleship.objects.IShip;
+import java.util.ArrayList;
 
 public interface IRules {
 	
 	/**
 	 * @return List of ship types.
 	 */
-	List<IShip> getShips();
+	ArrayList<String> getShips();
 	
 	/**
 	 * @return Shots per round.

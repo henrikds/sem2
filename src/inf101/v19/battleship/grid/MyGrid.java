@@ -35,27 +35,24 @@ public class MyGrid<T> implements IGrid<T> {
 			cells.add(item);
 		}
 	}
-
 	
 	@Override
 	public int getHeight() {
 		return width;
 		}
 
-
 	@Override
 	public int getWidth() {
 		return height;
 	}
 
-
 	@Override
 	public void put(IItem item) {
-		int yStart = item.getArea().getXStart();
-		int xStart = item.getArea().getYStart();
-		int yEnd = item.getArea().getYEnd();
-		int xEnd = item.getArea().getXEnd();
-		
+		int yStart = item.getArea().getYStart() -1;
+		int xStart = item.getArea().getXStart() -1;
+		int yEnd = item.getArea().getYEnd() -1;
+		int xEnd = item.getArea().getXEnd() -1;
+
 		for (int y = yStart; y <= yEnd; y++) {
 			for (int x = xStart; x <= xEnd; x++) {
 				cells.set(x + (y * width), item);
@@ -63,7 +60,6 @@ public class MyGrid<T> implements IGrid<T> {
 		}
 	}
 
-	
 	@Override
 	public IItem get(int x, int y) {
 		if(x < 0 || x >= width)
