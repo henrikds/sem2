@@ -24,7 +24,7 @@ public class StandardRules implements IRules{
 
 	@Override
 	public boolean getSinkNotice() {
-		return false;
+		return true;
 	}
 
 	@Override
