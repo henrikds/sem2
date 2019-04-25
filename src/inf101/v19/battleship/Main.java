@@ -64,33 +64,35 @@ public class Main {
 				System.out.println("(Needs to be typed like this: A-1)");
 				
 				String coord = in.nextLine();
-				ArrayList<String> possibleCords = boardPlayer.possibleEndPoints(coord, ship);
 				
-				System.out.println("Choose end coordinate for your " + ship.getType() + ".");
-				System.out.println("\nPossible end coordinates:\n");
+				while (true) {
+					ArrayList<String> possibleCoords = boardPlayer.possibleEndPoints(coord, ship);
 				
-				for (int n = 0; n < possibleCords.size(); n++) {
-					System.out.println(n +1 + ": " + possibleCords.get(n));
+					if (!possibleCoords.isEmpty()) {
+						System.out.println("Choose end coordinate for your " + ship.getType() + ".");
+						System.out.println("\nPossible end coordinates:\n");
+						
+						for (int n = 0; n < possibleCoords.size(); n++) {
+							System.out.println(n +1 + ": " + possibleCoords.get(n));
+						}
+						
+						int endCoordChosen = in.nextInt();
+						in.nextLine();//Absorbs the "\n" that nextInt() didn't.
+						
+						int xStart = Coordinate.getX(coord);
+						int yStart = Coordinate.getY(coord);
+						int xEnd = Coordinate.getX(possibleCoords.get(endCoordChosen -1));
+						int yEnd = Coordinate.getY(possibleCoords.get(endCoordChosen -1));
+						
+						ship.changePlacement(xStart, yStart, xEnd, yEnd);
+						boardPlayer.put(ship);
+						boardPlayer.draw(false);
+						break;
+					}
+					System.out.println("No possible placments with that start coordinate.");
+					coord = in.nextLine();
 				}
-				
-				int endCoordChosen = in.nextInt();
-				in.nextLine();//Absorbs the "\n" that nextInt() didn't.
-				
-				int xStart = Coordinate.getX(coord);
-				int yStart = Coordinate.getY(coord);
-				int xEnd = Coordinate.getX(possibleCords.get(endCoordChosen -1));
-				int yEnd = Coordinate.getY(possibleCords.get(endCoordChosen -1));
-				
-				ship.changePlacement(xStart, yStart, xEnd, yEnd);
-				boardPlayer.put(ship);
-				boardPlayer.draw(false);
 			}
-			
-//			boardAI.put(stuart);
-//			boardAI.put(kingKong);
-//			
-//			boardAI.draw(false);
-//			boardPlayer.draw(false);
 			
 			gameRunning = false;
 			in.close();

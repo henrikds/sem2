@@ -5,7 +5,8 @@ public class Coordinate {
 	private static String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
 	public static int getX(String coord) {
-		return Integer.parseInt(String.valueOf(coord.charAt(2)));
+		return Integer.parseInt(String.valueOf(coord.substring(2, coord.length())));
+		
 	}
 
 	public static int getY(String coord) {

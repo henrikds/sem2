@@ -32,8 +32,8 @@ public class Board<T> implements IGrid<T> {
 
 		this.height = height;
 		this.width = width;
-		cells = new ArrayList<IItem>(height * width);
-		for (int i = 0; i < height * width; ++i) {
+		cells = new ArrayList<IItem>(height * width + width);
+		for (int i = 0; i < height * width + width; ++i) {
 			cells.add(item);
 		}
 	}
@@ -90,10 +90,11 @@ public class Board<T> implements IGrid<T> {
 		
 		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
-				if (this.get(xEnd - n, yEnd) != null) break;
-				if (n == itemLength -1) {
-					endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
-				}
+				if (this.get(xEnd - n -1, yEnd -1) == null) {
+					if (n == itemLength -1) {
+						endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
+					}
+				}else break;
 			}
 		}
 		
@@ -102,10 +103,12 @@ public class Board<T> implements IGrid<T> {
 		
 		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
-				if (this.get(xEnd + n, yEnd) != null) break;
-				if (n == itemLength -1) {
-					endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
-				}
+				if (this.get(xEnd + n -1, yEnd -1) == null) {
+					if (n == itemLength -1) {
+						endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
+					}
+					
+				}else break;
 			}
 		}
 		
@@ -114,10 +117,11 @@ public class Board<T> implements IGrid<T> {
 		
 		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
-				if (this.get(xEnd, yEnd - n) != null) break;
-				if (n == itemLength -1) {
-					endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
-				}
+				if (this.get(xEnd -1, yEnd - n -1) == null) {
+					if (n == itemLength -1) {
+						endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
+					}
+				}else break;	
 			}
 		}
 		
@@ -126,10 +130,11 @@ public class Board<T> implements IGrid<T> {
 		
 		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
-				if (this.get(xEnd, yEnd + n) != null) break;
-				if (n == itemLength -1) {
-					endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
-				}
+				if (this.get(xEnd -1, yEnd + n -1) == null) {
+					if (n == itemLength -1) {
+						endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
+					}
+				}else break;
 			}
 		}
 		
