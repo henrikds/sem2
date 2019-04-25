@@ -2,7 +2,7 @@ package inf101.v19.battleship.UI;
 
 import java.util.ArrayList;
 
-import inf101.v19.battleship.grid.MyGrid;
+import inf101.v19.battleship.grid.Board;
 import inf101.v19.battleship.objects.IItem;
 
 public class CheapInterface {
@@ -64,7 +64,7 @@ public class CheapInterface {
 		}
 	}
 	
-	public void drawBoard(MyGrid<IItem> board, boolean playerBoard, boolean hidden) {
+	public void drawBoard(Board<IItem> board, boolean playerBoard, boolean hidden) {
 		
 		final int width = board.getWidth();
 		final int height = board.getHeight();

@@ -5,24 +5,16 @@ import inf101.v19.battleship.grid.Area;
 public class FishingBoat implements IShip{
 
 	private Area shipArea;
-	private int length = 1;
 	private String customName;
 	
-	public FishingBoat(int x, int y) {
-		if(x < 0 || y < 0)
-			throw new IllegalArgumentException();
+	public FishingBoat(int xStart, int yStart, int xEnd, int yEnd) {
 		
-		this.shipArea = new Area(x, y, length, 1);
+		this.shipArea = new Area(xStart, yStart, xEnd, yEnd);
 	}
 	
 	@Override
 	public String getType() {
 		return "Fishing Boat";
-	}
-
-	@Override
-	public int getLength() {
-		return length;
 	}
 
 	@Override
@@ -38,6 +30,16 @@ public class FishingBoat implements IShip{
 	@Override
 	public Area getArea() {
 		return shipArea;
+	}
+
+	@Override
+	public int getLength() {
+		return 1;
+	}
+
+	@Override
+	public void changePlacement(int xStart, int yStart, int xEnd, int yEnd) {
+		this.shipArea = new Area(xStart, yStart, xEnd, yEnd);
 	}
 
 }

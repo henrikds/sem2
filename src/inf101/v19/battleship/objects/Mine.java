@@ -14,4 +14,9 @@ public class Mine implements IItem{
 		return null;
 	}
 
+	@Override
+	public int getLength() {
+		return 1;
+	}
+
 }

@@ -2,69 +2,48 @@ package inf101.v19.battleship.grid;
 
 public class Area implements IArea {
 	
-	private int x;
-	private int y;
-	private int length;
-	private int height;
+	private int xStart;
+	private int yStart;
+	private int xEnd;
+	private int yEnd;
 	
 	/**
 	 * 
 	 * Construct a area with the given dimensions.
 	 * 
-	 * @param x
-	 * @param y
-	 * @param height
-	 * @param length
+	 * @param xStart
+	 * @param yStart
+	 * @param xEnd
+	 * @param yEnd
 	 */
 	
-	public Area(int x, int y, int length, int height) {
-		if(x <= 0 || y <= 0 || length <= 0 || height <= 0)
+	public Area(int xStart, int yStart, int xEnd, int yEnd) {
+		if(xStart <= 0 || yStart <= 0 || xEnd <= 0 || yEnd <= 0)
 			throw new IllegalArgumentException();
 		
-		this.x = x;
-		this.y = y;
-		this.height = height;
-		this.length = length;
+		this.xStart = xStart;
+		this.yStart = yStart;
+		this.xEnd = xEnd;
+		this.yEnd = yEnd;
 		}
-	
-	@Override
-	public int getHeight() {
-		return height;
-	}
-
-	@Override
-	public int getLength() {
-		return length;
-	}
 
 	@Override
 	public int getXStart() {
-		return x;
+		return xStart;
 	}
 
 	@Override
 	public int getYStart() {
-		return y;
+		return yStart;
 	}
 
 	@Override
 	public int getXEnd() {
-		return x + length - 1;
+		return xEnd;
 	}
 
 	@Override
 	public int getYEnd() {
-		return y + height - 1;
+		return yEnd;
 	}
-
-	@Override
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	@Override
-	public void setY(int y) {
-		this.y = y;
-	}
-
 }

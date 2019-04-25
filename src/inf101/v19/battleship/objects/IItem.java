@@ -13,4 +13,9 @@ public interface IItem {
 		 * @return The area of the item.
 		 */
 		Area getArea();
+		
+		/**
+		 * @return Length of item.
+		 */
+		int getLength();
 }

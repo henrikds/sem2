@@ -1,20 +1,28 @@
 package inf101.v19.battleship.game;
 
 import java.util.ArrayList;
+import inf101.v19.battleship.objects.IShip;
+import inf101.v19.battleship.objects.Carrier;
 
 public class StandardRules implements IRules{
 
 	@Override
-	public ArrayList<String> getShips() {
-		ArrayList<String> ships = new ArrayList<String>();
+	public ArrayList<IShip> getShips() {
+		ArrayList<IShip> ships = new ArrayList<IShip>();
 		
-		ships.add("Carrier");
-		ships.add("Battleship");
-		ships.add("Destroyer");
-		ships.add("Submarine");
-		ships.add("Patrol Boat");
+		ships.add(new Carrier(1, 1, 1, 1));
+		ships.add(new Carrier(1, 1, 1, 1));
+		ships.add(new Carrier(1, 1, 1, 1));
+		ships.add(new Carrier(1, 1, 1, 1));
+		ships.add(new Carrier(1, 1, 1, 1));
 		
 		return ships;
+	}
+	
+	@Override
+	public int[] getLengths() {
+		int[] lengths = {5, 4, 3, 3, 2};
+		return lengths;
 	}
 
 	@Override

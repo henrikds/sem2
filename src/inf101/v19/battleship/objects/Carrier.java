@@ -5,14 +5,10 @@ import inf101.v19.battleship.grid.Area;
 public class Carrier implements IShip{
 
 	private Area shipArea;
-	private int length = 5;
 	private String customName;
 	
-	public Carrier(int x, int y) {
-		if(x < 0 || y < 0)
-			throw new IllegalArgumentException();
-		
-		this.shipArea = new Area(x, y, length, 1);
+	public Carrier(int xStart, int yStart, int xEnd, int yEnd) {
+		this.shipArea = new Area(xStart, yStart, xEnd, yEnd);
 	}
 	
 	@Override
@@ -26,19 +22,24 @@ public class Carrier implements IShip{
 	}
 
 	@Override
-	public int getLength() {
-		return length;
-	}
-
-	@Override
 	public void setCustomName(String name) {
 		this.customName = name;
-		
 	}
 
 	@Override
 	public String getCustomName(String name) {
 		return customName;
+	}
+
+	@Override
+	public int getLength() {
+		return 5;
+	}
+
+	@Override
+	public void changePlacement(int xStart, int yStart, int xEnd, int yEnd) {
+		this.shipArea = new Area(xStart, yStart, xEnd, yEnd);
+		
 	}
 
 }

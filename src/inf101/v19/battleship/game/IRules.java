@@ -2,12 +2,14 @@ package inf101.v19.battleship.game;
 
 import java.util.ArrayList;
 
+import inf101.v19.battleship.objects.IShip;
+
 public interface IRules {
 	
 	/**
 	 * @return List of ship types.
 	 */
-	ArrayList<String> getShips();
+	ArrayList<IShip> getShips();
 	
 	/**
 	 * @return Shots per round.
@@ -28,5 +30,10 @@ public interface IRules {
 	 * @return Height of board
 	 */
 	int getBoardHeight();
+
+	/**
+	 * @return List of lengths of ships.
+	 */
+	int[] getLengths();
 
 }

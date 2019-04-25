@@ -1,5 +1,6 @@
 package inf101.v19.battleship.grid;
 
+import java.util.ArrayList;
 import inf101.v19.battleship.objects.IItem;
 
 public interface IGrid<T> {
@@ -21,6 +22,15 @@ public interface IGrid<T> {
 	 * @param item The contents the cell is to have.
 	 */
 	void put(IItem item);
+	
+	/**
+	 * Find available end points for item
+	 * 
+	 * @param start coordinate
+	 * @param item
+	 * 
+	 */
+	ArrayList<String> possibleEndPoints (String startCoord, IItem item);
 
 	/**
 	 * 
@@ -33,12 +43,12 @@ public interface IGrid<T> {
 	 * @param y The row of the cell to get contents of.
 	 */
 	IItem get(int x, int y);
-//
-//	/**
-//	 * Make a copy
-//	 *
-//	 * @return A fresh copy of the grid, with the same elements
-//	 */
-//	IGrid<T> copy();
-
+	
+	/**
+	 * 
+	 * Draw gird to console
+	 * @param If IItems should be hidden
+	 * 
+	 */
+	void draw(boolean hidden);
 }
