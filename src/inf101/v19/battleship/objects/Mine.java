@@ -28,7 +28,8 @@ public class Mine implements IItem{
 
 	@Override
 	public int hit() {
-		return 0;
+		this.health =- 1;
+		return health;
 	}
 
 }

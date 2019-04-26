@@ -35,5 +35,10 @@ public interface IRules {
 	 * @return List of lengths of ships.
 	 */
 	int[] getLengths();
+	
+	/**
+	 * Prints the rules.
+	 */
+	void printRules();
 
 }

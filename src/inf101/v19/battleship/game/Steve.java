@@ -5,14 +5,17 @@ import java.util.Random;
 
 import inf101.v19.battleship.grid.Board;
 import inf101.v19.battleship.grid.Coordinate;
+import inf101.v19.battleship.objects.Hit;
 import inf101.v19.battleship.objects.IItem;
 import inf101.v19.battleship.objects.IShip;
+import inf101.v19.battleship.objects.Miss;
 
 public class Steve implements INonPlayer {
 
 	private Board<IItem> stevesBoard;
-	private ArrayList<IShip> stevesShips;
 	private Random rand = new Random();
+	public ArrayList<IShip> stevesShips;
+	private ArrayList<String> stevesShots = new ArrayList<String>();;
 	
 	public Steve(Board<IItem> board, IRules rules) {
 		this.stevesBoard = board;
@@ -43,6 +46,50 @@ public class Steve implements INonPlayer {
 			}
 		}
 		return stevesBoard;
+	}
+	
+	@Override
+	public ArrayList<IShip> getShips() {
+		return stevesShips;
+	}
+	
+	@Override
+	public boolean fireAtPlayer(Board<IItem> playerBoard) {
+		int randomX;
+		int randomY;
+		String shotCoord;
+		
+		//Make sure Steve has not shot at that coordinate before;
+		while (true) {
+			randomX = rand.nextInt(playerBoard.getWidth());
+			randomY = rand.nextInt(playerBoard.getHeight());
+			shotCoord = Coordinate.getCoordinate(randomX +1, randomY +1);
+			if (!stevesShots.contains(shotCoord)) {
+				stevesShots.add(shotCoord);
+				break;
+			}
+		}
+		System.out.println("\nEnemy shot at " + shotCoord + ".");
+		
+		IItem item = playerBoard.get(randomX, randomY);
+		if (item != null) {
+			switch (item.getType()) {
+				case "Hit":
+					item.hit();
+					return false;
+				case "Miss":
+					item.hit();
+					return false;
+				default:
+					System.out.println("It hits your " + item.getType() + ".");
+					System.out.println("Remaining life: " + item.hit());
+					playerBoard.put(new Hit(randomX +1, randomY +1));
+					return true;
+			}
+		}
+		playerBoard.put(new Miss(randomX +1, randomY +1));
+		System.out.println("Enemy missed.");
+		return false;
 	}
 	
 	private String randomCoord() {

@@ -50,7 +50,8 @@ public class FishingBoat implements IShip{
 
 	@Override
 	public int hit() {
-		return 0;
+		this.health = health -1;
+		return health;
 	}
 
 }

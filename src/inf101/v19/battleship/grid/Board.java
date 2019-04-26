@@ -34,8 +34,8 @@ public class Board<T> implements IGrid<T> {
 
 		this.height = height;
 		this.width = width;
-		cells = new ArrayList<IItem>(height * width);
-		for (int i = 0; i < height * width; ++i) {
+		cells = new ArrayList<IItem>(height * width + width);
+		for (int i = 0; i < height * width + width; ++i) {
 			cells.add(item);
 		}
 	}
@@ -89,7 +89,7 @@ public class Board<T> implements IGrid<T> {
 		}
 	}
 	
-	public boolean fire(String shot) {
+	public boolean fireFromPlayer(String shot) {
 		if (!Coordinate.validCoord(shot, this)) return false;
 		
 		int x = Coordinate.getX(shot) -1;
@@ -129,7 +129,7 @@ public class Board<T> implements IGrid<T> {
 		int xEnd = xStart + itemLength -1;
 		int yEnd = yStart;
 		
-		if (!(xEnd < 1 || yEnd < 1 || xEnd >= width || yEnd >= height)) {
+		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd - n -1, yEnd -1) == null) {
 					if (n == itemLength -1) {
@@ -142,7 +142,7 @@ public class Board<T> implements IGrid<T> {
 		xEnd = xStart - itemLength +1;
 		yEnd = yStart;
 		
-		if (!(xEnd < 1 || yEnd < 1 || xEnd >= width || yEnd >= height)) {
+		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd + n -1, yEnd -1) == null) {
 					if (n == itemLength -1) {
@@ -156,7 +156,7 @@ public class Board<T> implements IGrid<T> {
 		xEnd = xStart;
 		yEnd = yStart + itemLength -1;
 		
-		if (!(xEnd < 1 || yEnd < 1 || xEnd >= width || yEnd >= height)) {
+		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd -1, yEnd - n -1) == null) {
 					if (n == itemLength -1) {
@@ -169,7 +169,7 @@ public class Board<T> implements IGrid<T> {
 		xEnd = xStart;
 		yEnd = yStart - itemLength +1;
 		
-		if (!(xEnd < 1 || yEnd < 1 || xEnd >= width || yEnd >= height)) {
+		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd -1, yEnd + n -1) == null) {
 					if (n == itemLength -1) {
@@ -210,41 +210,50 @@ public class Board<T> implements IGrid<T> {
 				}
 				else {
 					IItem item = this.get(x, y);
-					
-					if (item != null) {
-						switch (item.getType()) {
-							case "Hit":
-								System.out.print("  X  ");
-								break;
-							case "Miss":
-								System.out.print("     ");
-								break;
-							case "Carrier":
-								if (!hidden) {
+					if (!hidden) {
+						if (item != null) {
+							switch (item.getType()) {
+								case "Hit":
+									System.out.print("  X  ");
+									break;
+								case "Miss":
+									System.out.print("     ");
+									break;
+								case "Carrier":
 									System.out.print("  C  ");
-								}break;
-							case "Battleship":
-								if (!hidden) {
+									break;
+								case "Battleship":
 									System.out.print("  B  ");
-								}break;
-							case "Destroyer":
-								if (!hidden) {
+									break;
+								case "Destroyer":
 									System.out.print("  D  ");
-								}break;
-								
-							case "Submarine":
-								if (!hidden) {
+									break;
+								case "Submarine":
 									System.out.print("  S  ");
-								}break;
-							case "PatrolBoat":
-								if (!hidden) {
+									break;
+								case "PatrolBoat":
 									System.out.print("  P  ");
-								}break;
+									break;
+							}
 						}
+						else System.out.print("|___|");
 					}
 					else {
-						if (!hidden) System.out.print("|___|");
-						else System.out.print("| ? |");
+						if (item != null) {
+							switch (item.getType()) {
+								case "Hit":
+									System.out.print("  X  ");
+									break;
+								case "Miss":
+									System.out.print("     ");
+									break;
+								default:
+									System.out.print("|___|");
+									break;
+
+							}
+						}
+						else System.out.print("|___|");
 					}
 				}
 			}

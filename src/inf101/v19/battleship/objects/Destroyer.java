@@ -44,7 +44,8 @@ public class Destroyer implements IShip {
 	
 	@Override
 	public int hit() {
-		return this.health =- 1;
+		this.health = health -1;
+		return health;
 	}
 
 	@Override
