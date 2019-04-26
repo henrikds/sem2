@@ -14,7 +14,7 @@ import inf101.v19.battleship.grid.Board;
 import inf101.v19.battleship.objects.IItem;
 import inf101.v19.battleship.objects.IShip;
 
-public class shipPlacementAITest {
+public class ShipPlacementAITest {
 	IRules rules = new StandardRules();
 	Board<IItem> testBoard = new Board<IItem>(rules.getBoardWidth(), rules.getBoardHeight(), null);
 	ArrayList<IShip> testShips = rules.getShips();
