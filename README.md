@@ -20,15 +20,15 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
 * Assignment by: *NAME* (*abc123*)
 * [ ] Assignment is ready for grading!
 * Code review:
-   * [ ] I've received feedback from @username, ...
-   * [ ] I've given feedback to @username, ...
+   * [x] I've received feedback from @username, ...
+   * [x] I've given feedback to @username, ...
 * Checklist:
-   * [ ] A playable Battleship game
+   * [x] A playable Battleship game
    * [ ] Explanation and motivation for how the game is implemented, e.g., design decisions, how the code is organized, what abstractions are used, etc.
    * [ ] Tests
    * [ ] Documentation (JavaDoc, comments, diagrams, README, etc.)
-   * [ ] Carefully named classes, interfaces, methods and variables.
-   * [ ] Carefully chosen abstractions and encapsulation (use of classes, interfaces, methods, etc).
+   * [x] Carefully named classes, interfaces, methods and variables.
+   * [x] Carefully chosen abstractions and encapsulation (use of classes, interfaces, methods, etc).
 
 ### Running instructions
 * To play the game, run: `class.name.here`
