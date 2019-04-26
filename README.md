@@ -34,7 +34,7 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
 * To play the game, run: `class.name.here`
 
 ## Overview
-*(overview of your code and what you've done)*
+Made a Battleship game where you are able to play against the computer. You can place a number of ship on a board and fire shots against another board.
 
 ## Design Choices
 *(how you've chosen to complete the assignment)*

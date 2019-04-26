@@ -140,7 +140,7 @@ public class Main {
 
 				System.out.println("\n\n");
 				System.out.println("ENEMY BOARD");
-				boardAI.draw(false);
+				boardAI.draw(true);
 				System.out.println("YOUR BOARD");	
 				boardPlayer.draw(false);
 
