@@ -25,7 +25,7 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
 * Checklist:
    * [x] A playable Battleship game
    * [ ] Explanation and motivation for how the game is implemented, e.g., design decisions, how the code is organized, what abstractions are used, etc.
-   * [ ] Tests
+   * [x] Tests
    * [ ] Documentation (JavaDoc, comments, diagrams, README, etc.)
    * [x] Carefully named classes, interfaces, methods and variables.
    * [x] Carefully chosen abstractions and encapsulation (use of classes, interfaces, methods, etc).
