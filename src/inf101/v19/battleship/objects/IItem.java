@@ -18,4 +18,15 @@ public interface IItem {
 		 * @return Length of item.
 		 */
 		int getLength();
+		
+		/**
+		 * @return Health
+		 * 
+		 */
+		int getHealth();
+		
+		/**
+		 * @return Health
+		 */
+		int hit();
 }

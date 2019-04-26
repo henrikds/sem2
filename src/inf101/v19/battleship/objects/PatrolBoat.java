@@ -2,19 +2,19 @@ package inf101.v19.battleship.objects;
 
 import inf101.v19.battleship.grid.Area;
 
-public class Carrier implements IShip{
+public class PatrolBoat implements IShip {
 
 	private Area shipArea;
 	private String customName = this.getType();
-	private int health = 5;
+	private int health = 2;
 	
-	public Carrier(int xStart, int yStart, int xEnd, int yEnd) {
+	public PatrolBoat(int xStart, int yStart, int xEnd, int yEnd) {
 		this.shipArea = new Area(xStart, yStart, xEnd, yEnd);
 	}
 	
 	@Override
 	public String getType() {
-		return "Carrier";
+		return "PatrolBoat";
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class Carrier implements IShip{
 
 	@Override
 	public int getLength() {
-		return 5;
+		return 2;
 	}	
 	
 	@Override

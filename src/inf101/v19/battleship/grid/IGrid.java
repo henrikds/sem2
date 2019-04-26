@@ -30,7 +30,7 @@ public interface IGrid<T> {
 	 * @param item
 	 * 
 	 */
-	ArrayList<String> possibleEndPoints (String startCoord, IItem item);
+	ArrayList<String> possibleEndPoints (String startCoord, IItem item, boolean doValidCheck);
 
 	/**
 	 * 

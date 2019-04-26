@@ -2,7 +2,11 @@ package inf101.v19.battleship.game;
 
 import java.util.ArrayList;
 import inf101.v19.battleship.objects.IShip;
+import inf101.v19.battleship.objects.PatrolBoat;
+import inf101.v19.battleship.objects.Submarine;
+import inf101.v19.battleship.objects.Battleship;
 import inf101.v19.battleship.objects.Carrier;
+import inf101.v19.battleship.objects.Destroyer;
 
 public class StandardRules implements IRules{
 
@@ -11,10 +15,10 @@ public class StandardRules implements IRules{
 		ArrayList<IShip> ships = new ArrayList<IShip>();
 		
 		ships.add(new Carrier(1, 1, 1, 1));
-		ships.add(new Carrier(1, 1, 1, 1));
-		ships.add(new Carrier(1, 1, 1, 1));
-		ships.add(new Carrier(1, 1, 1, 1));
-		ships.add(new Carrier(1, 1, 1, 1));
+		ships.add(new Battleship(1, 1, 1, 1));
+		ships.add(new Destroyer(1, 1, 1, 1));
+		ships.add(new Submarine(1, 1, 1, 1));
+		ships.add(new PatrolBoat(1, 1, 1, 1));
 		
 		return ships;
 	}

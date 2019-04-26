@@ -3,8 +3,10 @@ package inf101.v19.battleship;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import inf101.v19.battleship.game.INonPlayer;
 import inf101.v19.battleship.game.IRules;
 import inf101.v19.battleship.game.StandardRules;
+import inf101.v19.battleship.game.Steve;
 import inf101.v19.battleship.grid.Board;
 import inf101.v19.battleship.grid.Coordinate;
 import inf101.v19.battleship.objects.IItem;
@@ -44,19 +46,26 @@ public class Main {
 			int boardHeight = rules.getBoardHeight();
 			Board<IItem> boardAI = new Board<IItem>(boardWidth, boardHeight, null);
 			Board<IItem> boardPlayer = new Board<IItem>(boardWidth, boardHeight, null);
-			
+			INonPlayer gerald = new Steve(boardAI, rules);
+			boardAI = gerald.fillBoard();
 			ArrayList<IShip> ships = rules.getShips();
 			
+			//
+			//PLACING SHIPS
+			//
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
 			System.out.println("You need to place your ships.");
 			System.out.println("These are your ships:\n");
-			System.out.println(String.format("%-16s %s\n" , "Ship", "Length" ));
+			System.out.println(String.format("%-16s %-16s %s\n" , "Ship", "Length" , "Health"));
 			
 			for (int n = 0; n < ships.size(); n++) {
-				System.out.println(String.format("%-16s %s" , ships.get(n).getType(), ships.get(n).getLength() ));
+				IItem ship = ships.get(n);
+				System.out.println(String.format("%-16s %-16s %s" , ship.getType(), ship.getLength() ,ship.getHealth()));
 			}
 			
 			System.out.println("\nThis is your board\n");
 			boardPlayer.draw(false);
+			
 			
 			for (IShip ship : ships) {
 				System.out.println("\nNow select starting point for your " + ship.getType() + "\n");
@@ -66,9 +75,10 @@ public class Main {
 				String coord = in.nextLine();
 				
 				while (true) {
-					ArrayList<String> possibleCoords = boardPlayer.possibleEndPoints(coord, ship);
+					ArrayList<String> possibleCoords = boardPlayer.possibleEndPoints(coord, ship, true);
 				
-					if (!possibleCoords.isEmpty()) {
+					if (possibleCoords == null);
+					else if (!possibleCoords.isEmpty()) {
 						System.out.println("Choose end coordinate for your " + ship.getType() + ".");
 						System.out.println("\nPossible end coordinates:\n");
 						
@@ -86,24 +96,74 @@ public class Main {
 						
 						ship.changePlacement(xStart, yStart, xEnd, yEnd);
 						boardPlayer.put(ship);
+						System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+						System.out.println("These are your ships:\n");
+						System.out.println(String.format("%-16s %-16s %s\n" , "Ship", "Length" , "Health"));
+						
+						for (int n = 0; n < ships.size(); n++) {
+							System.out.println(String.format("%-16s %-16s %s" , ship.getType(), ship.getLength() ,ship.getHealth()));
+						}
+						System.out.println("\n\n");
 						boardPlayer.draw(false);
+
 						break;
 					}
 					System.out.println("No possible placments with that start coordinate.");
 					coord = in.nextLine();
+					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
 				}
 			}
 			
+
+			//
+			//ROUNDS BEGINS
+			//
+			while (true) {
+				System.out.println("Great! You have now placed your ships.");
+				System.out.println("\nIt is now time to start attacking another board.");
+				System.out.println("But be aware, they will attack you too.\n");
+				System.out.println("Do you know the rules of the game?");
+				System.out.println("1. Yes    2. No");
+				int helpRules = in.nextInt();
+				in.hasNextLine();//Absorbs the "\n" that nextInt() didn't.
+				
+				if (helpRules == 2) {
+					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
+					System.out.println("Here are the rules.");
+				}
+				
+				//
+				//Player turn
+				//
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
+				System.out.println("These are your ships:\n");
+				System.out.println(String.format("%-16s %-16s %s\n" , "Ship", "Length" , "Health"));
+					
+				for (int n = 0; n < ships.size(); n++) {
+					IItem ship = ships.get(n);
+					System.out.println(String.format("%-16s %-16s %s" , ship.getType(), ship.getLength() ,ship.getHealth()));
+				}
+				System.out.println("\n\n");
+				System.out.println("ENEMY BOARD");
+				boardAI.draw(false);
+				System.out.println("YOUR BOARD");	
+				boardPlayer.draw(false);
+
+				System.out.println("Coordinate to fire:");
+				String shot = in.nextLine();
+				boardAI.fire(shot);
+				
+				//
+				//Non-player turn
+				//
+				
+				
+				
+				break;
+
+			}
 			gameRunning = false;
 			in.close();
-			
-//			CheapInterface UI = new CheapInterface(10, 10);
-
-//			UI.updateInterface();
-			
-//			UI.drawBoard(boardAI, false, true);
-//			UI.drawBoard(boardPlayer, true, false);
-			
 		}
 	}
 }

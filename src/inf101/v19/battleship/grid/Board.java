@@ -3,7 +3,9 @@ package inf101.v19.battleship.grid;
 import java.util.ArrayList;
 import java.util.List;
 
+import inf101.v19.battleship.objects.Hit;
 import inf101.v19.battleship.objects.IItem;
+import inf101.v19.battleship.objects.Miss;
 import inf101.v19.battleship.grid.Coordinate;
 
 /**
@@ -32,8 +34,8 @@ public class Board<T> implements IGrid<T> {
 
 		this.height = height;
 		this.width = width;
-		cells = new ArrayList<IItem>(height * width + width);
-		for (int i = 0; i < height * width + width; ++i) {
+		cells = new ArrayList<IItem>(height * width);
+		for (int i = 0; i < height * width; ++i) {
 			cells.add(item);
 		}
 	}
@@ -46,6 +48,16 @@ public class Board<T> implements IGrid<T> {
 	@Override
 	public int getWidth() {
 		return height;
+	}
+	
+	@Override
+	public IItem get(int x, int y) {
+		if(x < 0 || x >= width)
+			throw new IndexOutOfBoundsException();
+		if(y < 0 || y >= height)
+			throw new IndexOutOfBoundsException();
+
+		return cells.get(x + (y * width));
 	}
 
 	@Override
@@ -77,10 +89,39 @@ public class Board<T> implements IGrid<T> {
 		}
 	}
 	
-	@Override
-	public ArrayList<String> possibleEndPoints(String startCoord, IItem item) {
+	public boolean fire(String shot) {
+		if (!Coordinate.validCoord(shot, this)) return false;
+		
+		int x = Coordinate.getX(shot) -1;
+		int y = Coordinate.getY(shot) -1;
+		
+		IItem item = this.get(x, y);
+		
+		if (item != null) {
+			switch (item.getType()) {
+				case "Hit":
+					item.hit();
+					return false;
+				case "Miss":
+					item.hit();
+					return false;
+				default:
+					System.out.println("You hit a " + item.getType() + ".");
+					System.out.println("Remaining life: " + item.hit());
+					this.put(new Hit(x +1, y +1));
+					return true;
+			}
+		}
+		this.put(new Miss(x +1, y +1));
+		System.out.println("You missed.");
+		return false;
+	}
+	
+	public ArrayList<String> possibleEndPoints(String startCoord, IItem item, boolean doValidCheck) {
 		ArrayList<String> endPoints = new ArrayList<String>();
 		int itemLength = item.getLength();
+		
+		if (doValidCheck) if (!Coordinate.validCoord(startCoord, this)) return null;
 		
 		final int xStart = Coordinate.getX(startCoord);
 		final int yStart = Coordinate.getY(startCoord);
@@ -88,7 +129,7 @@ public class Board<T> implements IGrid<T> {
 		int xEnd = xStart + itemLength -1;
 		int yEnd = yStart;
 		
-		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
+		if (!(xEnd < 1 || yEnd < 1 || xEnd >= width || yEnd >= height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd - n -1, yEnd -1) == null) {
 					if (n == itemLength -1) {
@@ -101,7 +142,7 @@ public class Board<T> implements IGrid<T> {
 		xEnd = xStart - itemLength +1;
 		yEnd = yStart;
 		
-		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
+		if (!(xEnd < 1 || yEnd < 1 || xEnd >= width || yEnd >= height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd + n -1, yEnd -1) == null) {
 					if (n == itemLength -1) {
@@ -115,7 +156,7 @@ public class Board<T> implements IGrid<T> {
 		xEnd = xStart;
 		yEnd = yStart + itemLength -1;
 		
-		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
+		if (!(xEnd < 1 || yEnd < 1 || xEnd >= width || yEnd >= height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd -1, yEnd - n -1) == null) {
 					if (n == itemLength -1) {
@@ -128,7 +169,7 @@ public class Board<T> implements IGrid<T> {
 		xEnd = xStart;
 		yEnd = yStart - itemLength +1;
 		
-		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
+		if (!(xEnd < 1 || yEnd < 1 || xEnd >= width || yEnd >= height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd -1, yEnd + n -1) == null) {
 					if (n == itemLength -1) {
@@ -141,42 +182,70 @@ public class Board<T> implements IGrid<T> {
 		return endPoints;
 	}
 
-	@Override
-	public IItem get(int x, int y) {
-		if(x < 0 || x > width)
-			throw new IndexOutOfBoundsException();
-		if(y < 0 || y > height)
-			throw new IndexOutOfBoundsException();
-
-		return cells.get(x + (y * width));
-	}
-	
 	public void draw(boolean hidden) {
 		
 		//Draw x-axis values (numbers)
-		for(int x = 0; x < width + 1; x++) {
-			
-			if (x != 0) {
-				if (x < 9) System.out.print(x + "   ");
-				else System.out.print(x + "  ");
+		for(int n = 0; n < 2; n++) {
+			for(int x = 0; x < width + 1; x++) {
+				if(n == 0) {
+					if (x != 0) {
+						if (x < 9) System.out.print(x + "    ");
+						else System.out.print(x + "    ");
+						}
+					else System.out.print("      ");
 				}
-			else System.out.print("    ");
+				else {
+					if (x != 0) System.out.print("     ");
+					else System.out.print("    ");
+				}
+			}
+			System.out.print("\n");
 		}
-		System.out.print("\n");
 		
 		for(int y = 0; y < height; y++) {
 			for (int x = -1; x < width; x++) {
 				//Draw y-axis value (letter)
 				if (x == -1) {
-					System.out.print(alphabet.charAt(y) + " ");
+					System.out.print(alphabet.charAt(y) + "   ");
 				}
 				else {
 					IItem item = this.get(x, y);
 					
 					if (item != null) {
-						System.out.print(" <> ");
+						switch (item.getType()) {
+							case "Hit":
+								System.out.print("  X  ");
+								break;
+							case "Miss":
+								System.out.print("     ");
+								break;
+							case "Carrier":
+								if (!hidden) {
+									System.out.print("  C  ");
+								}break;
+							case "Battleship":
+								if (!hidden) {
+									System.out.print("  B  ");
+								}break;
+							case "Destroyer":
+								if (!hidden) {
+									System.out.print("  D  ");
+								}break;
+								
+							case "Submarine":
+								if (!hidden) {
+									System.out.print("  S  ");
+								}break;
+							case "PatrolBoat":
+								if (!hidden) {
+									System.out.print("  P  ");
+								}break;
+						}
 					}
-					else System.out.print("|__|");
+					else {
+						if (!hidden) System.out.print("|___|");
+						else System.out.print("| ? |");
+					}
 				}
 			}
 			System.out.println("\n");
