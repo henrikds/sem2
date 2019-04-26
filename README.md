@@ -17,7 +17,7 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
    * For longer extensions, we need a concrete reason for the delay. Please also contact us if there are [other things we need to consider](http://www.uib.no/student/49241/trenger-du-tilrettelegging-av-ditt-studiel%C3%B8p).
 
 # Progress report - Please add answers/descriptions/comments to your project below 
-* Assignment by: *NAME* (*abc123*)
+* Assignment by: Henrik Drægni Stolpnes (yeq004)
 * [ ] Assignment is ready for grading!
 * Code review:
    * [x] I've received feedback from @username, ...
