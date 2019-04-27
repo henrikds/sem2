@@ -41,26 +41,27 @@ I've chosen to have the game start with the player to only get to know about his
 
 Another design that might be a little harsh, is that if the player makes a mistake when doing an input, the game will not present a new choice. This is just because the game is already pretty slow in it's progress due to the time it takes to input everything through the console. Only choices that can't be skipped are redoable. There are some inputs that if not done correctly will crash the game. An example of this is if you type anything other than a number when presented with a choice between numbered alternatives. But come on, that should'nt be so hard.
 
-### Abstractions
+## Abstractions
 I've split the program into four folders.
-* Game
+
+#### Game
 	This contains every class that has to do with the game logic.
 	* Events - contains a function to check win condition and if a ship has been sunk.
 	* Printer - contains some functions for printing that were used several times or not just not wanted in Main.java.
 	* StandardRules - contains the standard rules based on the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF) .
 	* Steve - is the AI the plays against the player.
-* Grid
+#### Grid
 	Here are every class related to positions and locations in the game logic.
 	* Area - is a rectangle area represented by two x-coordinates and two y-coordinates.
 	* Board - is the place a player or an AI place their ships and target their shots.
 	* Coordinate - is a class working with the input string of board locations. (Ex: "B-3")
-* Objects
+#### Objects
 	Here are all the different objects that can be placed in a board.
 	* Carrier, Battleship, Destroyer, Submarine and PatrolBoat - are all ships to be placed into the game.
 	* ShipFactory - is factory to create these ships.
 	* Hit - is an object that is placed into a board if a shot from either a player or an AI hits a ships location.
 	* Miss - does the same for a misplaced shot.
-* Tests
+#### Tests
 	As the name probably explains it contains the tests of the program.
 	* FireTest - checks if a Carrier is hit by the shot aimed at it's location.
 	* ShipPlacementAITest - checks if a AI is able to place ships by checking if the number of coordinates containing ships is as expected.
