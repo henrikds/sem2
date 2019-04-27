@@ -45,24 +45,24 @@ Another design that might be a little harsh, is that if the player makes a mista
 I've split the program into four folders.
 
 #### Game
-	This contains every class that has to do with the game logic.
+This contains every class that has to do with the game logic.
 	* Events - contains a function to check win condition and if a ship has been sunk.
 	* Printer - contains some functions for printing that were used several times or not just not wanted in Main.java.
 	* StandardRules - contains the standard rules based on the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF) .
 	* Steve - is the AI the plays against the player.
 #### Grid
-	Here are every class related to positions and locations in the game logic.
+Here are every class related to positions and locations in the game logic.
 	* Area - is a rectangle area represented by two x-coordinates and two y-coordinates.
 	* Board - is the place a player or an AI place their ships and target their shots.
 	* Coordinate - is a class working with the input string of board locations. (Ex: "B-3")
 #### Objects
-	Here are all the different objects that can be placed in a board.
+Here are all the different objects that can be placed in a board.
 	* Carrier, Battleship, Destroyer, Submarine and PatrolBoat - are all ships to be placed into the game.
 	* ShipFactory - is factory to create these ships.
 	* Hit - is an object that is placed into a board if a shot from either a player or an AI hits a ships location.
 	* Miss - does the same for a misplaced shot.
 #### Tests
-	As the name probably explains it contains the tests of the program.
+As the name probably explains it contains the tests of the program.
 	* FireTest - checks if a Carrier is hit by the shot aimed at it's location.
 	* ShipPlacementAITest - checks if a AI is able to place ships by checking if the number of coordinates containing ships is as expected.
 AppInfo and Main file lies outside of these folders.
