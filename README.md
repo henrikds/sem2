@@ -49,8 +49,8 @@ I've split the program into four folders.
 This contains every class that has to do with the game logic.
 - Events - contains a function to check win condition and if a ship has been sunk.
 - Printer - contains some functions for printing that were used several times or not just not wanted in Main.java.
-- StandardRules - contains the standard rules based on the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF) .
-	* Steve - is the AI the plays against the player.
+- StandardRules - contains the standard rules based on the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF).
+- Steve - is the AI the plays against the player.
 
 ###### Grid
 
@@ -79,7 +79,7 @@ AppInfo and Main file lies outside of these folders.
 
 ### Lessons learned
 
-*(What choices turned out to work well or less well? Is there something you'd have done differently?)*
+I had some problems with how I was referring to coordinates. In Board.put(), Area.java and Coordinates.java function I use coordinates where x ranges from [1, width] and y ranges from [1, height]. But in Board.get(), every other function using the Board.get(), I use x ranges [0, width) and y ranges [0, height). This made it harder to deal with coordinates. So I have learned that it is important to be consistent with data structures. So that the right value is returned when a parameter is entered.
 
 ## Testing
 Most of the testing has been just playing the game, looking for errors. Most of the encountered problems have been possible to solve by reading the error message. And since most of the problems have been with locations and where object are placed printing the board have been the number one way to solve the errors. That being said, there have been a few times where it was needed to go into full debug mode to correct the math of the logic.
