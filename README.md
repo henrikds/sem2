@@ -44,31 +44,41 @@ Another design that might be a little harsh, is that if the player makes a mista
 ## Abstractions
 I've split the program into four folders.
 
-#### Game
+###### Game
+
 This contains every class that has to do with the game logic.
-	* Events - contains a function to check win condition and if a ship has been sunk.
-	* Printer - contains some functions for printing that were used several times or not just not wanted in Main.java.
-	* StandardRules - contains the standard rules based on the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF) .
+- Events - contains a function to check win condition and if a ship has been sunk.
+- Printer - contains some functions for printing that were used several times or not just not wanted in Main.java.
+- StandardRules - contains the standard rules based on the [2002 Hasbro rules](https://www.hasbro.com/common/instruct/BattleShip_(2002).PDF) .
 	* Steve - is the AI the plays against the player.
-#### Grid
+
+###### Grid
+
 Here are every class related to positions and locations in the game logic.
-	* Area - is a rectangle area represented by two x-coordinates and two y-coordinates.
-	* Board - is the place a player or an AI place their ships and target their shots.
-	* Coordinate - is a class working with the input string of board locations. (Ex: "B-3")
-#### Objects
+- Area - is a rectangle area represented by two x-coordinates and two y-coordinates.
+- Board - is the place a player or an AI place their ships and target their shots.
+- Coordinate - is a class working with the input string of board locations. (Ex: "B-3")
+
+###### Objects
+
 Here are all the different objects that can be placed in a board.
-	* Carrier, Battleship, Destroyer, Submarine and PatrolBoat - are all ships to be placed into the game.
-	* ShipFactory - is factory to create these ships.
-	* Hit - is an object that is placed into a board if a shot from either a player or an AI hits a ships location.
-	* Miss - does the same for a misplaced shot.
-#### Tests
+- Carrier, Battleship, Destroyer, Submarine and PatrolBoat - are all ships to be placed into the game.
+- ShipFactory - is factory to create these ships.
+- Hit - is an object that is placed into a board if a shot from either a player or an AI hits a ships location.
+- Miss - does the same for a misplaced shot.
+
+###### Tests
+
 As the name probably explains it contains the tests of the program.
-	* FireTest - checks if a Carrier is hit by the shot aimed at it's location.
-	* ShipPlacementAITest - checks if a AI is able to place ships by checking if the number of coordinates containing ships is as expected.
+- FireTest - checks if a Carrier is hit by the shot aimed at it's location.
+- ShipPlacementAITest - checks if a AI is able to place ships by checking if the number of coordinates containing ships is as expected.
 AppInfo and Main file lies outside of these folders.
-	* AppInfo - contains basic information about the program.
-	* Main - contains most of the printing to console and every input from player.
+
+###### AppInfo - contains basic information about the program.
+###### Main - contains most of the printing to console and every input from player. As well as the core that ties all the classes together.
+
 ### Lessons learned
+
 *(What choices turned out to work well or less well? Is there something you'd have done differently?)*
 
 ## Testing
