@@ -26,7 +26,7 @@ This project contains [obligatory assignment 2](SEM-2.md). You can also [read th
    * [x] A playable Battleship game
    * [x] Explanation and motivation for how the game is implemented, e.g., design decisions, how the code is organized, what abstractions are used, etc.
    * [x] Tests
-   * [ ] Documentation (JavaDoc, comments, diagrams, README, etc.)
+   * [x] Documentation (JavaDoc, comments, diagrams, README, etc.)
    * [x] Carefully named classes, interfaces, methods and variables.
    * [x] Carefully chosen abstractions and encapsulation (use of classes, interfaces, methods, etc).
 
