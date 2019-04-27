@@ -25,13 +25,16 @@ public class ShipPlacementAITest {
 		testBot.fillBoard();
 		int numberOfShipCoords = 0;
 		int expectedNumberOfShipCoords = 0;
+		//Loop through whole board counting items
 		for (int x = 0; x < testBoard.getWidth(); x++) {
 			for (int y = 0; y < testBoard.getHeight(); y++) {
 				if (testBoard.get(x, y) != null) numberOfShipCoords++;
 			}
 		}
+		//Expected items
 		for (IShip ship : testShips) expectedNumberOfShipCoords += ship.getLength();
 		
+		//If number of expected items is equal to actual items
 		if (numberOfShipCoords != expectedNumberOfShipCoords) {
 			fail("Not enough ship coordinates.");
 		}

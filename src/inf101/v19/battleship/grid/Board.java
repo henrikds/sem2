@@ -34,6 +34,7 @@ public class Board<T> implements IGrid<T> {
 
 		this.height = height;
 		this.width = width;
+		//Create cells to hold items on board
 		cells = new ArrayList<IItem>(height * width + width);
 		for (int i = 0; i < height * width + width; ++i) {
 			cells.add(item);
@@ -82,6 +83,7 @@ public class Board<T> implements IGrid<T> {
 			yStart = yTemp;
 		}
 
+		//Loop through cells and adding item
 		for (int y = yStart; y <= yEnd; y++) {
 			for (int x = xStart; x <= xEnd; x++) {
 				cells.set(x + (y * width), item);
@@ -90,21 +92,26 @@ public class Board<T> implements IGrid<T> {
 	}
 	
 	public boolean fireFromPlayer(String shot) {
+		//Checks if shot is valid
 		if (!Coordinate.validCoord(shot, this)) return false;
 		
 		int x = Coordinate.getX(shot) -1;
 		int y = Coordinate.getY(shot) -1;
 		
+		//Checks location
 		IItem item = this.get(x, y);
 		
 		if (item != null) {
 			switch (item.getType()) {
+				//Hit before
 				case "Hit":
 					item.hit();
 					return false;
+				//Miss before
 				case "Miss":
 					item.hit();
 					return false;
+				//Hit something new
 				default:
 					System.out.println("You hit a " + item.getType() + ".");
 					System.out.println("Remaining life: " + item.hit());
@@ -112,6 +119,7 @@ public class Board<T> implements IGrid<T> {
 					return true;
 			}
 		}
+		//New miss
 		this.put(new Miss(x +1, y +1));
 		System.out.println("You missed.");
 		return false;
@@ -121,31 +129,45 @@ public class Board<T> implements IGrid<T> {
 		ArrayList<String> endPoints = new ArrayList<String>();
 		int itemLength = item.getLength();
 		
+		//Check if coordinate is valid
 		if (doValidCheck) if (!Coordinate.validCoord(startCoord, this)) return null;
 		
+		//Create start points
 		final int xStart = Coordinate.getX(startCoord);
 		final int yStart = Coordinate.getY(startCoord);
 		
+		//
+		//Create end points in horizontal positive direction
+		//
 		int xEnd = xStart + itemLength -1;
 		int yEnd = yStart;
 		
+		//Check if points every point of the placement is empty
 		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd - n -1, yEnd -1) == null) {
+					//If last point is also empty
 					if (n == itemLength -1) {
+						//add as possible placement
 						endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
 					}
 				}else break;
 			}
 		}
 		
+		//
+		//Create end points in horizontal negative direction
+		//
 		xEnd = xStart - itemLength +1;
 		yEnd = yStart;
 		
+		//Check if points every point of the placement is empty
 		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd + n -1, yEnd -1) == null) {
+					//If last point is also empty
 					if (n == itemLength -1) {
+						//add as possible placement
 						endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
 					}
 					
@@ -153,26 +175,38 @@ public class Board<T> implements IGrid<T> {
 			}
 		}
 		
+		//
+		//Create end points in vertical positive direction
+		//
 		xEnd = xStart;
 		yEnd = yStart + itemLength -1;
 		
+		//Check if points every point of the placement is empty
 		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd -1, yEnd - n -1) == null) {
+					//If last point is also empty
 					if (n == itemLength -1) {
+						//add as possible placement
 						endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
 					}
 				}else break;	
 			}
 		}
 		
+		//
+		//Create end points in vertical negative direction
+		//
 		xEnd = xStart;
 		yEnd = yStart - itemLength +1;
 		
+		//Check if points every point of the placement is empty
 		if (!(xEnd < 1 || yEnd < 1 || xEnd > width || yEnd > height)) {
 			for (int n = 0; n < itemLength; n++) {
 				if (this.get(xEnd -1, yEnd + n -1) == null) {
+					//If last point is also empty
 					if (n == itemLength -1) {
+						//add as possible placement
 						endPoints.add(Coordinate.getCoordinate(xEnd, yEnd));
 					}
 				}else break;
@@ -210,8 +244,10 @@ public class Board<T> implements IGrid<T> {
 				}
 				else {
 					IItem item = this.get(x, y);
+					//If board is not hidden
 					if (!hidden) {
 						if (item != null) {
+							//Print every type
 							switch (item.getType()) {
 								case "Hit":
 									System.out.print("  X  ");
@@ -238,8 +274,10 @@ public class Board<T> implements IGrid<T> {
 						}
 						else System.out.print("|___|");
 					}
+					//If board is hidden
 					else {
 						if (item != null) {
+							//print hits and misses
 							switch (item.getType()) {
 								case "Hit":
 									System.out.print("  X  ");
@@ -247,12 +285,14 @@ public class Board<T> implements IGrid<T> {
 								case "Miss":
 									System.out.print("     ");
 									break;
+								//Not empty but hidden
 								default:
 									System.out.print("|___|");
 									break;
 
 							}
 						}
+						//Print empty location
 						else System.out.print("|___|");
 					}
 				}

@@ -24,13 +24,18 @@ public class Steve implements INonPlayer {
 	
 	@Override
 	public Board<IItem> fillBoard() {
+		//Fills board with ships
 		for (IShip ship : stevesShips) {
+			//Runs to possible placement has been found
 			while (true) {
 				
+				//Creates a random coordinate
 				String randomStartCoord = randomCoord();
 				ArrayList<String> possibleCoords; 
+				//Find possible end points
 				possibleCoords = stevesBoard.possibleEndPoints(randomStartCoord, ship, false);
 				
+				//If possible end points
 				if (!possibleCoords.isEmpty()) {
 					int n = rand.nextInt(possibleCoords.size());
 					
@@ -55,6 +60,7 @@ public class Steve implements INonPlayer {
 	
 	@Override
 	public boolean fireAtPlayer(Board<IItem> playerBoard) {
+		//finds random coordinate
 		int randomX;
 		int randomY;
 		String shotCoord;
@@ -64,6 +70,7 @@ public class Steve implements INonPlayer {
 			randomX = rand.nextInt(playerBoard.getWidth());
 			randomY = rand.nextInt(playerBoard.getHeight());
 			shotCoord = Coordinate.getCoordinate(randomX +1, randomY +1);
+			//If not shot not been made before add shot to list
 			if (!stevesShots.contains(shotCoord)) {
 				stevesShots.add(shotCoord);
 				break;
@@ -71,9 +78,16 @@ public class Steve implements INonPlayer {
 		}
 		System.out.println("\nEnemy shot at " + shotCoord + ".");
 		
+		//Checks what is at shot location
 		IItem item = playerBoard.get(randomX, randomY);
+		
+		//If there is something on the shot location
 		if (item != null) {
 			switch (item.getType()) {
+				//Hit or miss should not be possible,
+				//but in case it is a miss or hit
+				//on the location not shot before,
+				//it is implemented.
 				case "Hit":
 					item.hit();
 					return false;
@@ -87,12 +101,14 @@ public class Steve implements INonPlayer {
 					return true;
 			}
 		}
+		//If nothing, it's a miss
 		playerBoard.put(new Miss(randomX +1, randomY +1));
 		System.out.println("Enemy missed.");
 		return false;
 	}
 	
 	private String randomCoord() {
+		//Creates a random coordinate
 		int randomX = rand.nextInt(stevesBoard.getWidth()) +1;
 		int randomY = rand.nextInt(stevesBoard.getHeight()) +1;
 		String randomCoordinate = Coordinate.getCoordinate(randomX, randomY);

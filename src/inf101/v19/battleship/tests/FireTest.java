@@ -18,14 +18,18 @@ public class FireTest {
 	    
 	@Test
 	void fire() {
+		//Put carrier into board
 		testBoard.put(testCarrier);
 		testBoard.draw(false);
+		//Fire five shots at carrier
 		for (int n = 1; n <= 5; n++) {
 			testBoard.fireFromPlayer("A-" + n);
 			testBoard.draw(false);
+			//If there is no carrier at location
 			if (testBoard.get(n -1, 0) == null) {
 				fail("There is no boat here.");
 			}
+			//If shot does not hit carrier
 			if (testBoard.get(n -1, 0).getType() != "Hit") {
 				fail("Shot did not hit Carrier");
 			}

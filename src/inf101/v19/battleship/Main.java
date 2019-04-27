@@ -30,6 +30,8 @@ public class Main {
 			
 			int rulesChosen = in.nextInt();
 			in.nextLine();//Consumes the "\n" that nextInt() didn't.
+			
+			//Creates rules
 			while (true) {
 				if (rulesChosen == 1) {
 					rules = new StandardRules();
@@ -49,6 +51,7 @@ public class Main {
 			int helpRules = in.nextInt();
 			in.hasNextLine();//Consumes the "\n" that nextInt() didn't.
 			
+			//Prints rules
 			if (helpRules == 2) {
 				rules.printRules();
 			}
@@ -57,14 +60,16 @@ public class Main {
 			in.nextLine();
 			in.nextLine();
 
-			
+			//Creates boards, ships and AI
 			int boardWidth = rules.getBoardWidth();
 			int boardHeight = rules.getBoardHeight();
 			Board<IItem> boardAI = new Board<IItem>(boardWidth, boardHeight, null);
 			Board<IItem> boardPlayer = new Board<IItem>(boardWidth, boardHeight, null);
-			INonPlayer gerald = new Steve(boardAI, rules);
-			boardAI = gerald.fillBoard();
 			ArrayList<IShip> ships = rules.getShips();
+			INonPlayer gerald = new Steve(boardAI, rules);
+			//Fills AI board
+			boardAI = gerald.fillBoard();
+			
 			
 			//
 			//PLACING SHIPS
@@ -77,7 +82,7 @@ public class Main {
 			System.out.println("\nThis is your board:\n");
 			boardPlayer.draw(false);
 			
-			
+			//Loops through every ship
 			for (IShip ship : ships) {
 				System.out.println("\nNow select starting point for your " + ship.getType() + "\n");
 				System.out.println("Choose a coordinate on the board based on the axis.");
@@ -85,17 +90,23 @@ public class Main {
 				
 				String coord = in.nextLine();
 				
+				//Runs to possible placement has been found
 				while (true) {
+					//Find possible end points
 					ArrayList<String> possibleCoords = boardPlayer.possibleEndPoints(coord, ship, true);
 				
+					//If possible no end points
 					if (possibleCoords == null);
+					//If possible points
 					else if (!possibleCoords.isEmpty()) {
 						System.out.println("\nChoose end coordinate for your " + ship.getType() + ".");
 						System.out.println("\nPossible end coordinates:");
 						
+						//Print possible end points
 						Printer.printNumericOptions(possibleCoords);
-						
 						int endCoordChosen;
+			
+						//Runs to possible end point have been chosen
 						while (true) {
 							System.out.println("\n");
 							endCoordChosen = in.nextInt();
@@ -104,13 +115,15 @@ public class Main {
 							System.out.println("Try again.");
 						}
 						
+						//Creates points and places the ship
 						int xStart = Coordinate.getX(coord);
 						int yStart = Coordinate.getY(coord);
 						int xEnd = Coordinate.getX(possibleCoords.get(endCoordChosen -1));
 						int yEnd = Coordinate.getY(possibleCoords.get(endCoordChosen -1));
-						
 						ship.changePlacement(xStart, yStart, xEnd, yEnd);
 						boardPlayer.put(ship);
+						
+						//Prints new board
 						System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 						Printer.printShips(ships);
 						System.out.println("\n\n");
@@ -118,6 +131,7 @@ public class Main {
 
 						break;
 					}
+					//If no possible placement was found
 					System.out.println("No possible placments with that start coordinate.");
 					coord = in.nextLine();
 					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -135,19 +149,23 @@ public class Main {
 				//
 				//Player turn
 				//
+				
+				//Prints ship list and boards 
 				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
 				Printer.printShips(ships);
-
 				System.out.println("\n\n");
 				System.out.println("ENEMY BOARD");
 				boardAI.draw(true);
 				System.out.println("YOUR BOARD");	
 				boardPlayer.draw(false);
-
+				
+				//Takes input coordinate to fire
 				System.out.println("\nCoordinate to fire:");
 				in.nextLine();
 				String shot = in.nextLine();
 				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+				
+				//Makes the shot
 				boardAI.fireFromPlayer(shot);
 				
 				//

@@ -8,6 +8,7 @@ import inf101.v19.battleship.objects.IShip;
 public class Printer {
 	
 	public static void printShips(ArrayList<IShip> ships) {
+		//Prints out players ships with length and health
 		System.out.println("These are your ships:\n");
 		System.out.println(String.format("%-16s %-16s %s\n" , "Ship", "Length" , "Health"));
 		
@@ -18,6 +19,7 @@ public class Printer {
 	}
 	
 	public static void printNumericOptions(ArrayList<String> options) {
+		//Prints out a list of options with numbers in front
 		for (int n = 0; n < options.size(); n++) {
 			System.out.println(n +1 + ": " + options.get(n));
 		}

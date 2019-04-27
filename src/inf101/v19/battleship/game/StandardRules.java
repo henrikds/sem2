@@ -13,6 +13,7 @@ public class StandardRules implements IRules{
 
 	@Override
 	public ArrayList<IShip> getShips() {
+		//Creates ships from name of ship type
 		ArrayList<IShip> ships = new ArrayList<IShip>();
 		
 		ships.add(ShipFactory.getShip("Carrier"));
@@ -26,6 +27,7 @@ public class StandardRules implements IRules{
 	
 	@Override
 	public int[] getLengths() {
+		//Return lengths of ships
 		int[] lengths = {5, 4, 3, 3, 2};
 		return lengths;
 	}
