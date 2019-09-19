@@ -5,30 +5,6 @@
 
 This project contains [obligatory assignment 2](SEM-2.md). You can also [read the assignment instructions online](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.sem2/blob/master/SEM-2.md) (may contain small updates that aren't in your local copy).
 
-**Deadline:**
-* The entire assignment has to be handed in by **Friday the 26th of April 23:59** 
-* [Tips for a smooth(er) hand-in (same as for SEM-1)](https://retting.ii.uib.no/inf101/inf101.v19/wikis/innlevering)
-
-**You have to indicate which parts of the assignment you've completed and if the assignment is ready for grading in the section below in your README.md.**
-
-**Extension:** You can ask the teaching assistants for a deadline extension if needed. You should already have completed parts of the assignment and pushed these to the repository at before the deadline when asking for an extension.
-   * A day or two extension is fine without motivation.
-   * For longer extensions, we need a concrete reason for the delay. Please also contact us if there are [other things we need to consider](http://www.uib.no/student/49241/trenger-du-tilrettelegging-av-ditt-studiel%C3%B8p).
-
-# Progress report - Please add answers/descriptions/comments to your project below 
-* Assignment by: Henrik Drægni Stolpnes (yeq004)
-* [x] Assignment is ready for grading!
-* Code review:
-   * [ ] I've received feedback from @username, ...
-   * [ ] I've given feedback to @username, ...
-* Checklist:
-   * [x] A playable Battleship game
-   * [x] Explanation and motivation for how the game is implemented, e.g., design decisions, how the code is organized, what abstractions are used, etc.
-   * [x] Tests
-   * [x] Documentation (JavaDoc, comments, diagrams, README, etc.)
-   * [x] Carefully named classes, interfaces, methods and variables.
-   * [x] Carefully chosen abstractions and encapsulation (use of classes, interfaces, methods, etc).
-
 ### Running instructions
 * To play the game, run: `Main.java`
 
