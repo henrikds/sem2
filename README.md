@@ -2,7 +2,6 @@
 
 
 * **README**
-* [Assignment instructions](SEM-2.md)
 
 This project contains [obligatory assignment 2](SEM-2.md). You can also [read the assignment instructions online](https://retting.ii.uib.no/inf101.v19.oppgaver/inf101.v19.sem2/blob/master/SEM-2.md) (may contain small updates that aren't in your local copy).
 
