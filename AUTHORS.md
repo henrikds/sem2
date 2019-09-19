@@ -1,3 +1,3 @@
 # Authors
 
-* *YOU*
+Henrik D. Stolpnes
